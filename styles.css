@@ -1,10 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 /* Base Styles & Utility overrides */
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+/* Responsive Fluid Typography */
+.text-fluid-h1 { font-size: clamp(2.5rem, 5vw + 1rem, 5.5rem); line-height: 1.1; }
+.text-fluid-h2 { font-size: clamp(2rem, 4vw + 1rem, 3.5rem); line-height: 1.2; }
+.text-fluid-h3 { font-size: clamp(1.25rem, 2vw + 1rem, 2rem); line-height: 1.3; }
+.text-fluid-p { font-size: clamp(1rem, 1vw + 0.75rem, 1.125rem); }
 
 /* Custom Microinteractions */
 
@@ -20,10 +26,17 @@ body {
 .visualizer-container {
     position: relative;
     width: 100%;
-    aspect-ratio: 16/9;
-    background-color: #f3f4f6; /* Fallback */
+    /* Mobile-friendly aspect ratio, expands on larger screens */
+    aspect-ratio: 4/3; 
+    background-color: #f7f5f2;
     overflow: hidden;
     border-radius: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+    .visualizer-container {
+        aspect-ratio: 16/9;
+    }
 }
 
 /* The actual stone texture that changes */
@@ -35,7 +48,7 @@ body {
     height: 100%;
     background-size: cover;
     background-position: center;
-    transition: background-image 0.5s ease-in-out;
+    transition: background-image 0.4s ease-in-out;
 }
 
 /* The room image with transparent cutout for the surface */
@@ -45,7 +58,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('assets/images/room-mask-placeholder.png'); /* We will generate a placeholder */
+    /* Base64 encoded SVG placeholder representing a room with a wall to be masked */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpath fill='%23f7f5f2' d='M0 0h1600v900H0z'/%3E%3Cpath fill='transparent' stroke='%23e5e5e5' stroke-width='4' d='M300 200h1000v500H300z'/%3E%3Ctext x='800' y='450' font-family='sans-serif' font-size='24' fill='%238e8e8e' text-anchor='middle'%3E[Transparent Wall Cutout Area]%3C/text%3E%3Cpath fill='%231a1a1a' opacity='0.05' d='M0 700l300-100v-400L0 0v700zM1600 700l-300-100v-400l300-200v700z'/%3E%3Cpath fill='%231a1a1a' opacity='0.1' d='M0 700h1600v200H0z'/%3E%3C/svg%3E");
     background-size: cover;
     background-position: center;
     pointer-events: none; /* Let clicks pass through if needed */
@@ -84,4 +98,12 @@ body {
 .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+/* Mobile Nav Toggle Utility */
+.mobile-menu {
+    display: none;
+}
+.mobile-menu.open {
+    display: flex;
 }

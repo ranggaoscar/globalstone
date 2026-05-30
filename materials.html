@@ -11,11 +11,12 @@
             theme: {
                 extend: {
                     colors: {
-                        'gs-offwhite': '#FAFAFA',
-                        'gs-charcoal': '#1C1C1C',
+                        'gs-offwhite': '#f7f5f2',
+                        'gs-charcoal': '#1a1a1a',
+                        'gs-blue': '#1B4F8A',
                         'gs-gold': '#B89B5E',
                         'gs-gray': '#8E8E8E',
-                        'gs-lightgray': '#F0F0F0',
+                        'gs-lightgray': '#E5E5E5',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -27,30 +28,45 @@
     </script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-white text-gs-charcoal font-sans antialiased pb-24">
+<body class="bg-gs-offwhite text-gs-charcoal font-sans antialiased pb-24">
 
     <!-- Header -->
-    <header class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gs-lightgray">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-2xl font-serif font-bold tracking-tight text-gs-charcoal">
+    <header class="bg-gs-offwhite/95 backdrop-blur-md sticky top-0 z-50 border-b border-gs-lightgray">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative">
+            <a href="index.html" class="text-2xl font-serif font-bold tracking-tight text-gs-charcoal">
                 Global Stone.
-            </div>
-            <nav>
-                <ul class="flex flex-wrap justify-center gap-6 md:gap-8 text-sm font-medium text-gs-gray">
-                    <li><a href="index.html" class="hover:text-gs-charcoal transition-colors">Home</a></li>
-                    <li><a href="materials.html" class="text-gs-charcoal border-b-2 border-gs-charcoal pb-1">Stock Update</a></li>
-                    <li><a href="showroom.html" class="hover:text-gs-charcoal transition-colors">Showroom Virtual</a></li>
-                    <li><a href="portfolio.html" class="hover:text-gs-charcoal transition-colors">Portfolio</a></li>
+            </a>
+            
+            <!-- Mobile Menu Toggle -->
+            <button id="mobileMenuBtn" class="md:hidden text-gs-charcoal focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:block">
+                <ul class="flex gap-8 text-sm font-medium text-gs-charcoal/80">
+                    <li><a href="index.html" class="hover:text-gs-blue transition-colors">Home</a></li>
+                    <li><a href="materials.html" class="text-gs-blue border-b-2 border-gs-blue pb-1">Stock Update</a></li>
+                    <li><a href="showroom.html" class="hover:text-gs-blue transition-colors">Showroom Virtual</a></li>
+                    <li><a href="portfolio.html" class="hover:text-gs-blue transition-colors">Portfolio</a></li>
                 </ul>
+            </nav>
+            
+            <!-- Mobile Nav -->
+            <nav id="mobileNav" class="mobile-menu flex-col absolute top-full left-0 w-full bg-gs-offwhite border-b border-gs-lightgray shadow-lg p-6 gap-6 text-center text-lg font-medium md:hidden">
+                <a href="index.html" class="text-gs-charcoal hover:text-gs-blue">Home</a>
+                <a href="materials.html" class="text-gs-blue border-b border-gs-blue inline-block pb-1">Stock Update</a>
+                <a href="showroom.html" class="text-gs-charcoal hover:text-gs-blue">Showroom Virtual</a>
+                <a href="portfolio.html" class="text-gs-charcoal hover:text-gs-blue">Portfolio</a>
             </nav>
         </div>
     </header>
 
     <!-- Page Header -->
-    <div class="bg-gs-offwhite py-16 border-b border-gs-lightgray">
-        <div class="max-w-7xl mx-auto px-6">
-            <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">Stock Update</h1>
-            <p class="text-gs-gray text-lg max-w-2xl">Ketersediaan material premium kami diperbarui secara berkala. Hubungi kami untuk reservasi blok spesifik (bookmatch).</p>
+    <div class="py-12 md:py-16 border-b border-gs-lightgray px-6">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="font-serif text-fluid-h2 font-bold mb-2 text-gs-charcoal">Stock Update</h1>
+            <p class="text-gs-gray text-fluid-p max-w-2xl">Ketersediaan material premium kami diperbarui secara berkala. Hubungi kami untuk reservasi blok spesifik (bookmatch).</p>
         </div>
     </div>
 
@@ -61,13 +77,13 @@
         <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
             <div class="flex gap-2 w-full md:w-auto overflow-x-auto pb-2 scrollbar-hide">
                 <button class="filter-btn active px-5 py-2 bg-gs-charcoal text-white rounded-full text-sm font-medium whitespace-nowrap" data-filter="all">Semua Material</button>
-                <button class="filter-btn px-5 py-2 bg-gs-lightgray text-gs-charcoal hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-filter="marble">Marble</button>
-                <button class="filter-btn px-5 py-2 bg-gs-lightgray text-gs-charcoal hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-filter="granite">Granite</button>
-                <button class="filter-btn px-5 py-2 bg-gs-lightgray text-gs-charcoal hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-filter="exotic">Exotic</button>
+                <button class="filter-btn px-5 py-2 bg-white border border-gs-lightgray text-gs-charcoal hover:border-gs-blue rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-filter="marble">Marble</button>
+                <button class="filter-btn px-5 py-2 bg-white border border-gs-lightgray text-gs-charcoal hover:border-gs-blue rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-filter="granite">Granite</button>
+                <button class="filter-btn px-5 py-2 bg-white border border-gs-lightgray text-gs-charcoal hover:border-gs-blue rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-filter="exotic">Exotic</button>
             </div>
             
             <div class="w-full md:w-64 relative">
-                <input type="text" id="searchInput" placeholder="Cari material..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-gs-charcoal text-sm">
+                <input type="text" id="searchInput" placeholder="Cari material..." class="w-full pl-10 pr-4 py-2 bg-white border border-gs-lightgray rounded-full focus:outline-none focus:border-gs-blue text-sm">
                 <svg class="w-4 h-4 absolute left-4 top-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
         </div>
@@ -85,7 +101,7 @@
                 </div>
                 <div>
                     <div class="text-xs font-bold tracking-widest text-gs-gold uppercase mb-1">Marble</div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-gs-charcoal">Gucci Black</h3>
+                    <h3 class="font-serif text-fluid-h3 font-bold mb-3 text-gs-charcoal">Gucci Black</h3>
                     <div class="flex justify-between items-center border-t border-gs-lightgray pt-3">
                         <div>
                             <span class="block text-xs text-gs-gray">Volume Tersedia</span>
@@ -109,7 +125,7 @@
                 </div>
                 <div>
                     <div class="text-xs font-bold tracking-widest text-gs-gold uppercase mb-1">Marble</div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-gs-charcoal">Lavish Gold</h3>
+                    <h3 class="font-serif text-fluid-h3 font-bold mb-3 text-gs-charcoal">Lavish Gold</h3>
                     <div class="flex justify-between items-center border-t border-gs-lightgray pt-3">
                         <div>
                             <span class="block text-xs text-gs-gray">Volume Tersedia</span>
@@ -133,7 +149,7 @@
                 </div>
                 <div>
                     <div class="text-xs font-bold tracking-widest text-gs-gold uppercase mb-1">Marble</div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-gs-charcoal">Statuario Turkey</h3>
+                    <h3 class="font-serif text-fluid-h3 font-bold mb-3 text-gs-charcoal">Statuario Turkey</h3>
                     <div class="flex justify-between items-center border-t border-gs-lightgray pt-3">
                         <div>
                             <span class="block text-xs text-gs-gray">Volume Tersedia</span>
@@ -157,7 +173,7 @@
                 </div>
                 <div>
                     <div class="text-xs font-bold tracking-widest text-gs-gold uppercase mb-1">Exotic</div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-gs-charcoal">Verde Amber</h3>
+                    <h3 class="font-serif text-fluid-h3 font-bold mb-3 text-gs-charcoal">Verde Amber</h3>
                     <div class="flex justify-between items-center border-t border-gs-lightgray pt-3">
                         <div>
                             <span class="block text-xs text-gs-gray">Estimasi Kedatangan</span>
@@ -181,7 +197,7 @@
                 </div>
                 <div>
                     <div class="text-xs font-bold tracking-widest text-gs-gold uppercase mb-1">Granite</div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-gs-charcoal">Grigio Montana</h3>
+                    <h3 class="font-serif text-fluid-h3 font-bold mb-3 text-gs-charcoal">Grigio Montana</h3>
                     <div class="flex justify-between items-center border-t border-gs-lightgray pt-3">
                         <div>
                             <span class="block text-xs text-gs-gray">Volume Tersedia</span>
@@ -205,7 +221,7 @@
                 </div>
                 <div>
                     <div class="text-xs font-bold tracking-widest text-gs-gold uppercase mb-1">Marble</div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-gs-charcoal">Rosso Allcante</h3>
+                    <h3 class="font-serif text-fluid-h3 font-bold mb-3 text-gs-charcoal">Rosso Allcante</h3>
                     <div class="flex justify-between items-center border-t border-gs-lightgray pt-3">
                         <div>
                             <span class="block text-xs text-gs-gray">Volume Tersedia</span>
@@ -228,15 +244,23 @@
     </section>
 
     <!-- Sticky Floating CTA -->
-    <div class="fixed bottom-0 left-0 w-full bg-gs-charcoal text-white z-50 border-t border-gs-gold/30">
+    <div class="fixed bottom-0 left-0 w-full bg-gs-charcoal text-white z-50 border-t border-gs-blue/50">
         <a href="https://wa.me/6281287875820" target="_blank" class="flex justify-center items-center py-4 px-4 hover:bg-black transition-colors group">
             <svg class="w-5 h-5 mr-3 text-green-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
             <span class="font-medium text-sm md:text-base tracking-wide">Cek Ketersediaan & Penawaran Harga: 0812-8787-5820</span>
         </a>
     </div>
 
-    <!-- Client-side Filter Script -->
+    <!-- Client-side Scripts -->
     <script>
+        // Mobile Menu
+        const btn = document.getElementById('mobileMenuBtn');
+        const nav = document.getElementById('mobileNav');
+        btn.addEventListener('click', () => {
+            nav.classList.toggle('open');
+        });
+
+        // Filtering Logic
         document.addEventListener('DOMContentLoaded', () => {
             const filterBtns = document.querySelectorAll('.filter-btn');
             const searchInput = document.getElementById('searchInput');
@@ -276,12 +300,12 @@
                 btn.addEventListener('click', (e) => {
                     // Update active state styling
                     filterBtns.forEach(b => {
-                        b.classList.remove('bg-gs-charcoal', 'text-white');
-                        b.classList.add('bg-gs-lightgray', 'text-gs-charcoal');
+                        b.classList.remove('bg-gs-charcoal', 'text-white', 'border-gs-charcoal');
+                        b.classList.add('bg-white', 'text-gs-charcoal', 'border-gs-lightgray');
                     });
                     
-                    e.target.classList.remove('bg-gs-lightgray', 'text-gs-charcoal');
-                    e.target.classList.add('bg-gs-charcoal', 'text-white');
+                    e.target.classList.remove('bg-white', 'text-gs-charcoal', 'border-gs-lightgray');
+                    e.target.classList.add('bg-gs-charcoal', 'text-white', 'border-gs-charcoal');
                     
                     currentFilter = e.target.dataset.filter;
                     filterItems();

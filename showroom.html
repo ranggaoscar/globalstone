@@ -11,11 +11,12 @@
             theme: {
                 extend: {
                     colors: {
-                        'gs-offwhite': '#FAFAFA',
-                        'gs-charcoal': '#1C1C1C',
+                        'gs-offwhite': '#f7f5f2',
+                        'gs-charcoal': '#1a1a1a',
+                        'gs-blue': '#1B4F8A',
                         'gs-gold': '#B89B5E',
                         'gs-gray': '#8E8E8E',
-                        'gs-lightgray': '#F0F0F0',
+                        'gs-lightgray': '#E5E5E5',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -27,131 +28,118 @@
     </script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-white text-gs-charcoal font-sans antialiased pb-24">
+<body class="bg-gs-offwhite text-gs-charcoal font-sans antialiased pb-24">
 
     <!-- Header -->
-    <header class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gs-lightgray">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-2xl font-serif font-bold tracking-tight text-gs-charcoal">
+    <header class="bg-gs-offwhite/95 backdrop-blur-md sticky top-0 z-50 border-b border-gs-lightgray">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative">
+            <a href="index.html" class="text-2xl font-serif font-bold tracking-tight text-gs-charcoal">
                 Global Stone.
-            </div>
-            <nav>
-                <ul class="flex flex-wrap justify-center gap-6 md:gap-8 text-sm font-medium text-gs-gray">
-                    <li><a href="index.html" class="hover:text-gs-charcoal transition-colors">Home</a></li>
-                    <li><a href="materials.html" class="hover:text-gs-charcoal transition-colors">Stock Update</a></li>
-                    <li><a href="showroom.html" class="text-gs-charcoal border-b-2 border-gs-charcoal pb-1">Showroom Virtual</a></li>
-                    <li><a href="portfolio.html" class="hover:text-gs-charcoal transition-colors">Portfolio</a></li>
+            </a>
+            
+            <!-- Mobile Menu Toggle -->
+            <button id="mobileMenuBtn" class="md:hidden text-gs-charcoal focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:block">
+                <ul class="flex gap-8 text-sm font-medium text-gs-charcoal/80">
+                    <li><a href="index.html" class="hover:text-gs-blue transition-colors">Home</a></li>
+                    <li><a href="materials.html" class="hover:text-gs-blue transition-colors">Stock Update</a></li>
+                    <li><a href="showroom.html" class="text-gs-blue border-b-2 border-gs-blue pb-1">Showroom Virtual</a></li>
+                    <li><a href="portfolio.html" class="hover:text-gs-blue transition-colors">Portfolio</a></li>
                 </ul>
+            </nav>
+            
+            <!-- Mobile Nav -->
+            <nav id="mobileNav" class="mobile-menu flex-col absolute top-full left-0 w-full bg-gs-offwhite border-b border-gs-lightgray shadow-lg p-6 gap-6 text-center text-lg font-medium md:hidden">
+                <a href="index.html" class="text-gs-charcoal hover:text-gs-blue">Home</a>
+                <a href="materials.html" class="text-gs-charcoal hover:text-gs-blue">Stock Update</a>
+                <a href="showroom.html" class="text-gs-blue border-b border-gs-blue inline-block pb-1">Showroom Virtual</a>
+                <a href="portfolio.html" class="text-gs-charcoal hover:text-gs-blue">Portfolio</a>
             </nav>
         </div>
     </header>
 
-    <!-- Page Header -->
-    <div class="bg-gs-offwhite py-12 md:py-16 border-b border-gs-lightgray">
-        <div class="max-w-7xl mx-auto px-6">
-            <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">Showroom Virtual</h1>
-            <p class="text-gs-gray text-lg max-w-2xl">Visualisasikan material batu alam premium kami langsung pada aplikasi interior mewah, dan inspeksi detail urat marmer secara mendalam.</p>
-        </div>
+    <!-- Page Header (Shortened) -->
+    <div class="py-8 md:py-12 text-center px-4">
+        <h1 class="font-serif text-fluid-h2 font-bold mb-2 text-gs-charcoal">Showroom Virtual</h1>
+        <p class="text-gs-gray text-fluid-p max-w-2xl mx-auto">Visualisasikan material premium pada ruangan berskala nyata secara instan.</p>
     </div>
 
-    <!-- Layer 1: Interactive Room Visualizer (Centerpiece) -->
-    <section class="py-16 max-w-7xl mx-auto px-6">
-        <div class="mb-8">
-            <h2 class="font-serif text-2xl md:text-3xl font-bold mb-2">Interactive Room Visualizer</h2>
-            <p class="text-gs-gray">Pilih material pada palet di bawah untuk melihat aplikasinya pada dinding ruangan berskala nyata.</p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <!-- Layer 1: Interactive Room Visualizer (Hero Feature) -->
+    <section class="max-w-6xl mx-auto px-4 md:px-6 mb-24">
+        <div class="flex flex-col gap-6">
             <!-- The Visualizer Display -->
-            <div class="lg:col-span-3">
+            <div class="w-full">
                 <div class="visualizer-container shadow-sm border border-gs-lightgray">
-                    <!-- Base layer (the stone texture) -->
                     <div id="vis-texture" class="visualizer-texture" style="background-image: url('assets/images/materials/GUCCI BLACK BOOKMATCH 3.jpg');"></div>
-                    <!-- Top layer (the room with a transparent hole) -->
-                    <!-- Note: We need to create an actual transparent PNG for this. For now, it will load the placeholder -->
                     <div class="visualizer-mask"></div>
                 </div>
             </div>
 
-            <!-- The Swatch Tray -->
-            <div class="lg:col-span-1">
-                <h3 class="font-serif font-bold text-lg mb-4 border-b border-gs-lightgray pb-2">Pilih Material</h3>
-                <div class="grid grid-cols-2 lg:grid-cols-1 gap-4 max-h-[500px] overflow-y-auto pr-2 scrollbar-hide">
-                    
+            <!-- The Swatch Tray (Horizontal Scroll) -->
+            <div class="w-full">
+                <div class="flex overflow-x-auto gap-4 pb-4 scrollbar-hide snap-x">
                     <!-- Swatch 1 -->
-                    <button class="swatch-btn flex items-center gap-3 p-2 border border-gs-charcoal bg-gs-offwhite rounded-sm text-left transition-colors" data-src="assets/images/materials/GUCCI BLACK BOOKMATCH 3.jpg">
-                        <div class="w-12 h-12 rounded-sm bg-gray-200 overflow-hidden shrink-0">
+                    <button class="swatch-btn snap-start shrink-0 flex flex-col items-center gap-2 p-2 border-2 border-gs-blue bg-white rounded-sm transition-all" data-src="assets/images/materials/GUCCI BLACK BOOKMATCH 3.jpg">
+                        <div class="w-20 h-20 rounded-sm bg-gray-200 overflow-hidden">
                             <img src="assets/images/materials/GUCCI BLACK BOOKMATCH 3.jpg" class="w-full h-full object-cover">
                         </div>
-                        <div>
-                            <span class="block font-bold text-sm">Gucci Black</span>
-                            <span class="block text-xs text-gs-gray">Marble</span>
-                        </div>
+                        <span class="block font-bold text-xs text-center w-20 truncate">Gucci Black</span>
                     </button>
-
                     <!-- Swatch 2 -->
-                    <button class="swatch-btn flex items-center gap-3 p-2 border border-transparent hover:border-gs-lightgray bg-white hover:bg-gs-offwhite rounded-sm text-left transition-colors" data-src="assets/images/materials/LAVISH GOLD.jpeg">
-                        <div class="w-12 h-12 rounded-sm bg-gray-200 overflow-hidden shrink-0">
+                    <button class="swatch-btn snap-start shrink-0 flex flex-col items-center gap-2 p-2 border-2 border-transparent hover:border-gs-lightgray bg-white rounded-sm transition-all" data-src="assets/images/materials/LAVISH GOLD.jpeg">
+                        <div class="w-20 h-20 rounded-sm bg-gray-200 overflow-hidden">
                             <img src="assets/images/materials/LAVISH GOLD.jpeg" class="w-full h-full object-cover">
                         </div>
-                        <div>
-                            <span class="block font-bold text-sm">Lavish Gold</span>
-                            <span class="block text-xs text-gs-gray">Marble</span>
-                        </div>
+                        <span class="block font-bold text-xs text-center w-20 truncate">Lavish Gold</span>
                     </button>
-
                     <!-- Swatch 3 -->
-                    <button class="swatch-btn flex items-center gap-3 p-2 border border-transparent hover:border-gs-lightgray bg-white hover:bg-gs-offwhite rounded-sm text-left transition-colors" data-src="assets/images/materials/STATUARIO TURKEY 2.jpg">
-                        <div class="w-12 h-12 rounded-sm bg-gray-200 overflow-hidden shrink-0">
+                    <button class="swatch-btn snap-start shrink-0 flex flex-col items-center gap-2 p-2 border-2 border-transparent hover:border-gs-lightgray bg-white rounded-sm transition-all" data-src="assets/images/materials/STATUARIO TURKEY 2.jpg">
+                        <div class="w-20 h-20 rounded-sm bg-gray-200 overflow-hidden">
                             <img src="assets/images/materials/STATUARIO TURKEY 2.jpg" class="w-full h-full object-cover">
                         </div>
-                        <div>
-                            <span class="block font-bold text-sm">Statuario Turkey</span>
-                            <span class="block text-xs text-gs-gray">Marble</span>
-                        </div>
+                        <span class="block font-bold text-xs text-center w-20 truncate">Statuario T.</span>
                     </button>
-
-                     <!-- Swatch 4 -->
-                     <button class="swatch-btn flex items-center gap-3 p-2 border border-transparent hover:border-gs-lightgray bg-white hover:bg-gs-offwhite rounded-sm text-left transition-colors" data-src="assets/images/materials/VERDE AMBER.jpg">
-                        <div class="w-12 h-12 rounded-sm bg-gray-200 overflow-hidden shrink-0">
+                    <!-- Swatch 4 -->
+                    <button class="swatch-btn snap-start shrink-0 flex flex-col items-center gap-2 p-2 border-2 border-transparent hover:border-gs-lightgray bg-white rounded-sm transition-all" data-src="assets/images/materials/VERDE AMBER.jpg">
+                        <div class="w-20 h-20 rounded-sm bg-gray-200 overflow-hidden">
                             <img src="assets/images/materials/VERDE AMBER.jpg" class="w-full h-full object-cover">
                         </div>
-                        <div>
-                            <span class="block font-bold text-sm">Verde Amber</span>
-                            <span class="block text-xs text-gs-gray">Exotic</span>
-                        </div>
+                        <span class="block font-bold text-xs text-center w-20 truncate">Verde Amber</span>
                     </button>
-
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Layer 2: High-Res Loupe Zoom -->
-    <section class="py-16 bg-gs-offwhite border-y border-gs-lightgray">
+    <section class="py-16 border-t border-gs-lightgray">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-10 text-center max-w-2xl mx-auto">
-                <h2 class="font-serif text-2xl md:text-3xl font-bold mb-4">Inspeksi Detail (Loupe Zoom)</h2>
-                <p class="text-gs-gray">Arahkan kursor pada gambar slab di bawah untuk melihat kerapatan pori dan detail urat batu resolusi tinggi secara *close-up*.</p>
+                <h2 class="font-serif text-fluid-h3 font-bold mb-4 text-gs-charcoal">Inspeksi Detail (Loupe Zoom)</h2>
+                <p class="text-gs-gray text-fluid-p">Arahkan kursor pada gambar slab di bawah untuk melihat kerapatan pori dan detail urat batu resolusi tinggi secara *close-up*.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <!-- Zoom Container 1 -->
                 <div>
-                    <h3 class="font-bold mb-3">Gucci Black Bookmatch</h3>
+                    <h3 class="font-bold mb-3 text-gs-charcoal">Gucci Black Bookmatch</h3>
                     <!-- image data-zoom-src should point to the very high res version. we use the same for now -->
                     <div class="loupe-container aspect-[4/3] bg-gray-200 rounded-sm overflow-hidden border border-gray-300" onmousemove="moveLoupe(event, this)" onmouseleave="hideLoupe(this)" data-zoom-src="assets/images/materials/GUCCI BLACK BOOKMATCH 3.jpg">
                         <img src="assets/images/materials/GUCCI BLACK BOOKMATCH 3.jpg" class="w-full h-full object-cover" alt="Gucci Black">
-                        <div class="loupe-glass w-48 h-48"></div>
+                        <div class="loupe-glass w-40 h-40 md:w-48 md:h-48"></div>
                     </div>
                 </div>
 
                 <!-- Zoom Container 2 -->
                 <div>
-                    <h3 class="font-bold mb-3">Grigio Montana</h3>
+                    <h3 class="font-bold mb-3 text-gs-charcoal">Grigio Montana</h3>
                     <div class="loupe-container aspect-[4/3] bg-gray-200 rounded-sm overflow-hidden border border-gray-300" onmousemove="moveLoupe(event, this)" onmouseleave="hideLoupe(this)" data-zoom-src="assets/images/materials/grigio montana basah.jpg">
                         <img src="assets/images/materials/grigio montana basah.jpg" class="w-full h-full object-cover" alt="Grigio Montana">
-                        <div class="loupe-glass w-48 h-48"></div>
+                        <div class="loupe-glass w-40 h-40 md:w-48 md:h-48"></div>
                     </div>
                 </div>
             </div>
@@ -159,13 +147,13 @@
     </section>
 
     <!-- Layer 3: In-Situ Editorial Gallery -->
-    <section class="py-16 max-w-7xl mx-auto px-6">
-        <div class="mb-10">
-            <h2 class="font-serif text-2xl md:text-3xl font-bold mb-2">In-Situ Gallery</h2>
-            <p class="text-gs-gray">Aplikasi nyata material Global Stone pada interior mewah berskala besar.</p>
+    <section class="py-16 max-w-7xl mx-auto px-6 border-t border-gs-lightgray">
+        <div class="mb-10 text-center">
+            <h2 class="font-serif text-fluid-h3 font-bold mb-2 text-gs-charcoal">In-Situ Gallery</h2>
+            <p class="text-gs-gray text-fluid-p">Aplikasi nyata material Global Stone pada interior mewah berskala besar.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             <!-- Image 1 -->
             <div class="aspect-square bg-gs-lightgray overflow-hidden">
                 <img src="assets/images/hero/MONACO GREY DINDING TV 1.png" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Monaco Grey Application">
@@ -182,7 +170,7 @@
     </section>
 
     <!-- Sticky Floating CTA -->
-    <div class="fixed bottom-0 left-0 w-full bg-gs-charcoal text-white z-50 border-t border-gs-gold/30">
+    <div class="fixed bottom-0 left-0 w-full bg-gs-charcoal text-white z-50 border-t border-gs-blue/30">
         <a href="https://wa.me/6281287875820" target="_blank" class="flex justify-center items-center py-4 px-4 hover:bg-black transition-colors group">
             <svg class="w-5 h-5 mr-3 text-green-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
             <span class="font-medium text-sm md:text-base tracking-wide">Cek Ketersediaan & Penawaran Harga: 0812-8787-5820</span>
@@ -191,6 +179,13 @@
 
     <!-- Scripts -->
     <script>
+        // Mobile Menu
+        const btn = document.getElementById('mobileMenuBtn');
+        const nav = document.getElementById('mobileNav');
+        btn.addEventListener('click', () => {
+            nav.classList.toggle('open');
+        });
+
         // 1. Interactive Room Visualizer
         const swatches = document.querySelectorAll('.swatch-btn');
         const visTexture = document.getElementById('vis-texture');
@@ -199,13 +194,13 @@
             btn.addEventListener('click', () => {
                 // Reset styling
                 swatches.forEach(b => {
-                    b.classList.remove('border-gs-charcoal', 'bg-gs-offwhite');
-                    b.classList.add('border-transparent', 'bg-white');
+                    b.classList.remove('border-gs-blue');
+                    b.classList.add('border-transparent');
                 });
                 
                 // Set active
-                btn.classList.remove('border-transparent', 'bg-white');
-                btn.classList.add('border-gs-charcoal', 'bg-gs-offwhite');
+                btn.classList.remove('border-transparent');
+                btn.classList.add('border-gs-blue');
 
                 // Change background
                 const imgSrc = btn.dataset.src;
