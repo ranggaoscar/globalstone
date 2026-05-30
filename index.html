@@ -31,33 +31,33 @@
 <body class="bg-gs-offwhite text-gs-charcoal font-sans antialiased pb-24">
 
     <!-- Header -->
-    <header id="main-header" class="bg-gs-offwhite/95 backdrop-blur-md fixed top-0 w-full z-50 border-b border-transparent transition-all duration-300 py-4">
+    <header id="main-header" class="bg-[#0c111d]/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-gs-blue/15 transition-all duration-300 py-3 shadow-[0_4px_20px_rgba(27,79,138,0.25)]">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center relative">
-            <a href="index.html" class="block w-32 md:w-40 shrink-0">
-                <img src="assets/images/logo.png" alt="Global Stone Logo" class="w-full h-auto">
+            <a href="index.html" class="block h-10 md:h-12 shrink-0">
+                <img src="assets/images/logo.png" alt="Global Stone Logo" class="h-full w-auto object-contain">
             </a>
             
             <!-- Mobile Menu Toggle -->
-            <button id="mobileMenuBtn" class="md:hidden text-gs-charcoal focus:outline-none z-50">
+            <button id="mobileMenuBtn" class="md:hidden text-white focus:outline-none z-50">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
 
             <!-- Desktop Nav -->
             <nav class="hidden md:block">
-                <ul class="flex gap-8 text-sm font-medium text-gs-charcoal/80">
-                    <li><a href="index.html" class="text-gs-blue border-b-2 border-gs-blue pb-1">Home</a></li>
-                    <li><a href="materials.html" class="hover:text-gs-blue transition-colors">Stock Update</a></li>
-                    <li><a href="showroom.html" class="hover:text-gs-blue transition-colors">Showroom Virtual</a></li>
-                    <li><a href="portfolio.html" class="hover:text-gs-blue transition-colors">Portfolio</a></li>
+                <ul class="flex gap-8 text-sm font-medium text-white/70">
+                    <li><a href="index.html" class="text-white border-b-2 border-gs-blue pb-1">Home</a></li>
+                    <li><a href="materials.html" class="hover:text-white transition-colors">Stock Update</a></li>
+                    <li><a href="showroom.html" class="hover:text-white transition-colors">Showroom Virtual</a></li>
+                    <li><a href="portfolio.html" class="hover:text-white transition-colors">Portfolio</a></li>
                 </ul>
             </nav>
             
             <!-- Mobile Nav (Hidden by default, overlays screen when active) -->
-            <nav id="mobileNav" class="mobile-menu flex-col absolute top-full left-0 w-full bg-gs-offwhite border-b border-gs-lightgray shadow-lg p-6 gap-6 text-center text-lg font-medium md:hidden hidden">
-                <a href="index.html" class="text-gs-blue border-b border-gs-blue inline-block pb-1">Home</a>
-                <a href="materials.html" class="text-gs-charcoal hover:text-gs-blue">Stock Update</a>
-                <a href="showroom.html" class="text-gs-charcoal hover:text-gs-blue">Showroom Virtual</a>
-                <a href="portfolio.html" class="text-gs-charcoal hover:text-gs-blue">Portfolio</a>
+            <nav id="mobileNav" class="mobile-menu flex-col absolute top-full left-0 w-full bg-[#0c111d]/95 backdrop-blur-md border-b border-gs-blue/30 shadow-[0_10px_30px_rgba(27,79,138,0.35)] p-6 gap-6 text-center text-lg font-medium md:hidden hidden">
+                <a href="index.html" class="text-white border-b border-gs-blue inline-block pb-1">Home</a>
+                <a href="materials.html" class="text-white/80 hover:text-white">Stock Update</a>
+                <a href="showroom.html" class="text-white/80 hover:text-white">Showroom Virtual</a>
+                <a href="portfolio.html" class="text-white/80 hover:text-white">Portfolio</a>
             </nav>
         </div>
     </header>
@@ -144,11 +144,11 @@
         const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                header.classList.add('border-gs-lightgray', 'shadow-sm', 'py-2');
-                header.classList.remove('border-transparent', 'py-4');
+                header.classList.add('py-1.5', 'bg-[#0c111d]/95', 'border-gs-blue/30', 'shadow-[0_4px_25px_rgba(27,79,138,0.35)]');
+                header.classList.remove('py-3', 'bg-[#0c111d]/90', 'border-gs-blue/15', 'shadow-[0_4px_20px_rgba(27,79,138,0.25)]');
             } else {
-                header.classList.remove('border-gs-lightgray', 'shadow-sm', 'py-2');
-                header.classList.add('border-transparent', 'py-4');
+                header.classList.remove('py-1.5', 'bg-[#0c111d]/95', 'border-gs-blue/30', 'shadow-[0_4px_25px_rgba(27,79,138,0.35)]');
+                header.classList.add('py-3', 'bg-[#0c111d]/90', 'border-gs-blue/15', 'shadow-[0_4px_20px_rgba(27,79,138,0.25)]');
             }
         });
 
