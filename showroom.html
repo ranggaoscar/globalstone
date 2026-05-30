@@ -27,6 +27,45 @@
         }
     </script>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 3D Canvas Container Styles */
+        #canvas-container {
+            width: 100%;
+            height: 60vh;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            border: 1px solid #E5E5E5;
+        }
+        
+        #canvas-container canvas {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+            outline: none;
+        }
+
+        /* 3D Tooltip HUD */
+        #data-tooltip {
+            position: fixed;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid #E5E5E5;
+            padding: 1rem;
+            border-radius: 4px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            transform: translate(0, 0);
+            z-index: 100;
+            color: #1a1a1a;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        #data-tooltip.visible {
+            opacity: 1;
+        }
+    </style>
 </head>
 <body class="bg-gs-offwhite text-gs-charcoal font-sans antialiased pb-24">
 
@@ -68,48 +107,29 @@
         <p class="text-gs-gray text-fluid-p max-w-2xl mx-auto">Visualisasikan material premium pada ruangan berskala nyata secara instan.</p>
     </div>
 
-    <!-- Layer 1: Interactive Room Visualizer (Hero Feature) -->
-    <section class="max-w-6xl mx-auto px-4 md:px-6 mb-24">
-        <div class="flex flex-col gap-6">
-            <!-- The Visualizer Display -->
-            <div class="w-full">
-                <div class="visualizer-container shadow-sm border border-gs-lightgray">
-                    <div id="vis-texture" class="visualizer-texture" style="background-image: url('assets/images/materials/GUCCI BLACK BOOKMATCH 3.jpg');"></div>
-                    <div class="visualizer-mask"></div>
-                </div>
-            </div>
-
-            <!-- The Swatch Tray (Horizontal Scroll) -->
-            <div class="w-full">
-                <div class="flex overflow-x-auto gap-4 pb-4 scrollbar-hide snap-x">
-                    <!-- Swatch 1 -->
-                    <button class="swatch-btn snap-start shrink-0 flex flex-col items-center gap-2 p-2 border-2 border-gs-blue bg-white rounded-sm transition-all" data-src="assets/images/materials/GUCCI BLACK BOOKMATCH 3.jpg">
-                        <div class="w-20 h-20 rounded-sm bg-gray-200 overflow-hidden">
-                            <img src="assets/images/materials/GUCCI BLACK BOOKMATCH 3.jpg" class="w-full h-full object-cover">
-                        </div>
-                        <span class="block font-bold text-xs text-center w-20 truncate">Gucci Black</span>
-                    </button>
-                    <!-- Swatch 2 -->
-                    <button class="swatch-btn snap-start shrink-0 flex flex-col items-center gap-2 p-2 border-2 border-transparent hover:border-gs-lightgray bg-white rounded-sm transition-all" data-src="assets/images/materials/LAVISH GOLD.jpeg">
-                        <div class="w-20 h-20 rounded-sm bg-gray-200 overflow-hidden">
-                            <img src="assets/images/materials/LAVISH GOLD.jpeg" class="w-full h-full object-cover">
-                        </div>
-                        <span class="block font-bold text-xs text-center w-20 truncate">Lavish Gold</span>
-                    </button>
-                    <!-- Swatch 3 -->
-                    <button class="swatch-btn snap-start shrink-0 flex flex-col items-center gap-2 p-2 border-2 border-transparent hover:border-gs-lightgray bg-white rounded-sm transition-all" data-src="assets/images/materials/STATUARIO TURKEY 2.jpg">
-                        <div class="w-20 h-20 rounded-sm bg-gray-200 overflow-hidden">
-                            <img src="assets/images/materials/STATUARIO TURKEY 2.jpg" class="w-full h-full object-cover">
-                        </div>
-                        <span class="block font-bold text-xs text-center w-20 truncate">Statuario T.</span>
-                    </button>
-                    <!-- Swatch 4 -->
-                    <button class="swatch-btn snap-start shrink-0 flex flex-col items-center gap-2 p-2 border-2 border-transparent hover:border-gs-lightgray bg-white rounded-sm transition-all" data-src="assets/images/materials/VERDE AMBER.jpg">
-                        <div class="w-20 h-20 rounded-sm bg-gray-200 overflow-hidden">
-                            <img src="assets/images/materials/VERDE AMBER.jpg" class="w-full h-full object-cover">
-                        </div>
-                        <span class="block font-bold text-xs text-center w-20 truncate">Verde Amber</span>
-                    </button>
+    <!-- Layer 1: Interactive 3D Showroom (Hero Feature) -->
+    <section class="max-w-7xl mx-auto px-4 md:px-6 mb-24">
+        <div class="mb-6">
+            <p class="text-gs-gray text-sm mb-2"><span class="inline-block w-2 h-2 rounded-full bg-gs-blue mr-2"></span>Interactive 3D View</p>
+            <p class="text-gs-charcoal font-medium">Geser untuk memutar kamera. Arahkan kursor ke batu untuk melihat spesifikasi detail.</p>
+        </div>
+        
+        <div class="w-full relative shadow-lg">
+            <div id="canvas-container"></div>
+            
+            <!-- Tooltip/HUD for 3D Elements -->
+            <div id="data-tooltip">
+                <div class="text-xs font-bold tracking-widest text-gs-blue uppercase mb-1" id="tt-cat">Category</div>
+                <h3 class="font-serif text-xl font-bold mb-3 border-b border-gs-lightgray pb-2" id="tt-title">Stone Name</h3>
+                <div class="flex gap-6">
+                    <div>
+                        <span class="block text-[10px] text-gs-gray uppercase tracking-wider">Volume</span>
+                        <span class="font-sans font-bold text-lg"><span id="tt-m2">0</span> <span class="text-sm font-normal">m²</span></span>
+                    </div>
+                    <div>
+                        <span class="block text-[10px] text-gs-gray uppercase tracking-wider">Slab</span>
+                        <span class="font-sans font-bold text-lg"><span id="tt-slab">0</span> <span class="text-sm font-normal">pcs</span></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -178,34 +198,17 @@
     </div>
 
     <!-- Scripts -->
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="showroom3d.js"></script>
+
     <script>
         // Mobile Menu
         const btn = document.getElementById('mobileMenuBtn');
         const nav = document.getElementById('mobileNav');
         btn.addEventListener('click', () => {
             nav.classList.toggle('open');
-        });
-
-        // 1. Interactive Room Visualizer
-        const swatches = document.querySelectorAll('.swatch-btn');
-        const visTexture = document.getElementById('vis-texture');
-
-        swatches.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Reset styling
-                swatches.forEach(b => {
-                    b.classList.remove('border-gs-blue');
-                    b.classList.add('border-transparent');
-                });
-                
-                // Set active
-                btn.classList.remove('border-transparent');
-                btn.classList.add('border-gs-blue');
-
-                // Change background
-                const imgSrc = btn.dataset.src;
-                visTexture.style.backgroundImage = `url('${imgSrc}')`;
-            });
         });
 
         // 2. High-Res Loupe Magnifier
