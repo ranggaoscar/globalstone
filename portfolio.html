@@ -4,236 +4,172 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Global Stone</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .page-header {
-            background-color: var(--steel-blue);
-            color: var(--clean-white);
-            padding: 4rem 0;
-        }
-
-        .page-header h1 {
-            color: var(--clean-white);
-            font-size: 2.5rem;
-        }
-
-        .page-header p {
-            color: #E5E7EB;
-            margin-top: 0.5rem;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .portfolio-card {
-            background: var(--glass-bg);
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
-            border-color: rgba(59, 130, 246, 0.4);
-        }
-
-        .portfolio-img-placeholder {
-            height: 200px;
-            background-color: var(--concrete-grey);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--clean-white);
-            font-weight: 600;
-        }
-
-        .portfolio-content {
-            padding: 2rem;
-        }
-
-        .portfolio-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--clean-white);
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        .portfolio-data {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .data-row {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 0.5rem;
-        }
-
-        .data-row:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .data-label {
-            color: var(--concrete-grey);
-            font-weight: 600;
-        }
-
-        .data-value {
-            font-weight: 700;
-            color: var(--clean-white);
-        }
-
-        body {
-            padding-bottom: 80px; 
-            background-color: var(--bg-light);
-        }
-
-        /* Mobile specific styles */
-        @media (max-width: 768px) {
-            .page-header { padding: 2.5rem 0; }
-            .page-header h1 { font-size: 2rem; }
-            .portfolio-grid {
-                grid-template-columns: 1fr;
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gs-offwhite': '#FAFAFA',
+                        'gs-charcoal': '#1C1C1C',
+                        'gs-gold': '#B89B5E',
+                        'gs-gray': '#8E8E8E',
+                        'gs-lightgray': '#F0F0F0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
             }
         }
-    </style>
+    </script>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="bg-gs-offwhite text-gs-charcoal font-sans antialiased pb-24">
 
-    <header>
-        <div class="container nav-container">
-            <div class="logo">Global Stone</div>
+    <!-- Header -->
+    <header class="bg-gs-offwhite/95 backdrop-blur-md sticky top-0 z-50 border-b border-gs-lightgray">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-2xl font-serif font-bold tracking-tight text-gs-charcoal">
+                Global Stone.
+            </div>
             <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="materials.html">Stock Update</a></li>
-                    <li><a href="showroom.html">Showroom Virtual</a></li>
-                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <ul class="flex flex-wrap justify-center gap-6 md:gap-8 text-sm font-medium text-gs-gray">
+                    <li><a href="index.html" class="hover:text-gs-charcoal transition-colors">Home</a></li>
+                    <li><a href="materials.html" class="hover:text-gs-charcoal transition-colors">Stock Update</a></li>
+                    <li><a href="showroom.html" class="hover:text-gs-charcoal transition-colors">Showroom Virtual</a></li>
+                    <li><a href="portfolio.html" class="text-gs-charcoal border-b-2 border-gs-charcoal pb-1">Portfolio</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <div class="page-header">
-        <div class="container">
-            <h1>Portfolio Proyek</h1>
-            <p>Rekam jejak Global Stone dalam menyuplai material untuk proyek berskala besar.</p>
+    <!-- Page Header -->
+    <div class="py-16 md:py-24 border-b border-gs-lightgray text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h1 class="font-serif text-4xl md:text-6xl font-bold mb-6">Our Legacy in Stone</h1>
+            <p class="text-gs-gray text-lg md:text-xl font-light">Kami bangga menjadi bagian dari pembangunan mahakarya arsitektur di Indonesia. Temukan aplikasi nyata material kami di berbagai proyek skala besar.</p>
         </div>
     </div>
 
-    <section class="section">
-        <div class="container">
-            
-            <div class="portfolio-grid">
+    <!-- Editorial Portfolio List -->
+    <section class="py-16">
+        
+        <!-- Project 1 -->
+        <article class="max-w-7xl mx-auto px-6 mb-24 lg:mb-32">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+                <!-- Image Section -->
+                <div class="lg:col-span-8 group overflow-hidden">
+                    <img src="assets/images/portfolio/IMG-20250212-WA0037.jpg" alt="Sudirman Office Tower" class="w-full aspect-video md:aspect-[16/10] object-cover hover-zoom-img">
+                </div>
                 
-                <!-- Portfolio 1 -->
-                <div class="portfolio-card">
-                    <img src="assets/images/portfolio/IMG-20250212-WA0037.jpg" alt="Sudirman Office Tower" class="portfolio-img">
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Sudirman Office Tower</h3>
-                        <div class="portfolio-data">
-                            <div class="data-row">
-                                <span class="data-label">Material:</span>
-                                <span class="data-value">Gucci Black</span>
-                            </div>
-                            <div class="data-row">
-                                <span class="data-label">Total Volume:</span>
-                                <span class="data-value">4,500 m2</span>
-                            </div>
-                            <div class="data-row">
-                                <span class="data-label">Durasi Supply:</span>
-                                <span class="data-value">14 Hari</span>
-                            </div>
+                <!-- Content Section -->
+                <div class="lg:col-span-4 flex flex-col justify-center">
+                    <div class="mb-4">
+                        <span class="text-xs font-bold tracking-widest text-gs-gold uppercase">Commercial</span>
+                    </div>
+                    <h2 class="font-serif text-3xl lg:text-4xl font-bold mb-6">Sudirman Office Tower</h2>
+                    
+                    <div class="space-y-4 mb-8 text-sm md:text-base border-t border-b border-gs-lightgray py-6">
+                        <div class="flex justify-between">
+                            <span class="text-gs-gray">Material Utama</span>
+                            <span class="font-bold">Gucci Black Marble</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gs-gray">Skala Proyek</span>
+                            <span class="font-bold">2,500 m²</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gs-gray">Aplikasi</span>
+                            <span class="font-bold">Main Lobby & Lift Area</span>
                         </div>
                     </div>
+                    
+                    <p class="text-gs-gray leading-relaxed">Instalasi masif Gucci Black Bookmatch pada dinding lobi utama menciptakan impresi mewah dan berwibawa bagi para eksekutif.</p>
                 </div>
-
-                <!-- Portfolio 2 -->
-                <div class="portfolio-card">
-                    <img src="assets/images/portfolio/IMG-20250212-WA0046.jpg" alt="PIK Luxury Residence" class="portfolio-img">
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">PIK Luxury Residence</h3>
-                        <div class="portfolio-data">
-                            <div class="data-row">
-                                <span class="data-label">Material:</span>
-                                <span class="data-value">Lavish Gold</span>
-                            </div>
-                            <div class="data-row">
-                                <span class="data-label">Total Volume:</span>
-                                <span class="data-value">1,200 m2</span>
-                            </div>
-                            <div class="data-row">
-                                <span class="data-label">Durasi Supply:</span>
-                                <span class="data-value">5 Hari</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio 3 -->
-                <div class="portfolio-card">
-                    <img src="assets/images/portfolio/IMG-20250212-WA0050.jpg" alt="Menteng Boutique Hotel" class="portfolio-img">
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Menteng Boutique Hotel</h3>
-                        <div class="portfolio-data">
-                            <div class="data-row">
-                                <span class="data-label">Material:</span>
-                                <span class="data-value">Statuario Turkey</span>
-                            </div>
-                            <div class="data-row">
-                                <span class="data-label">Total Volume:</span>
-                                <span class="data-value">2,800 m2</span>
-                            </div>
-                            <div class="data-row">
-                                <span class="data-label">Durasi Supply:</span>
-                                <span class="data-value">8 Hari</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio 4 -->
-                <div class="portfolio-card">
-                    <img src="assets/images/portfolio/IMG-20250214-WA0018.jpg" alt="Kuningan Commercial" class="portfolio-img">
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Kuningan Commercial</h3>
-                        <div class="portfolio-data">
-                            <div class="data-row">
-                                <span class="data-label">Material:</span>
-                                <span class="data-value">Verde Amber</span>
-                            </div>
-                            <div class="data-row">
-                                <span class="data-label">Total Volume:</span>
-                                <span class="data-value">3,100 m2</span>
-                            </div>
-                            <div class="data-row">
-                                <span class="data-label">Durasi Supply:</span>
-                                <span class="data-value">10 Hari</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </div>
+        </article>
+
+        <!-- Project 2 (Reversed Layout) -->
+        <article class="max-w-7xl mx-auto px-6 mb-24 lg:mb-32">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+                <!-- Content Section (First on Desktop) -->
+                <div class="lg:col-span-4 flex flex-col justify-center order-2 lg:order-1">
+                    <div class="mb-4">
+                        <span class="text-xs font-bold tracking-widest text-gs-gold uppercase">Residential</span>
+                    </div>
+                    <h2 class="font-serif text-3xl lg:text-4xl font-bold mb-6">PIK Luxury Residence</h2>
+                    
+                    <div class="space-y-4 mb-8 text-sm md:text-base border-t border-b border-gs-lightgray py-6">
+                        <div class="flex justify-between">
+                            <span class="text-gs-gray">Material Utama</span>
+                            <span class="font-bold">Lavish Gold</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gs-gray">Skala Proyek</span>
+                            <span class="font-bold">850 m²</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gs-gray">Aplikasi</span>
+                            <span class="font-bold">Living Room & Bathroom</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gs-gray leading-relaxed">Perpaduan urat emas dari Lavish Gold memberikan kehangatan eksklusif pada area ruang keluarga dan lantai utama kediaman pribadi.</p>
+                </div>
+
+                <!-- Image Section -->
+                <div class="lg:col-span-8 group overflow-hidden order-1 lg:order-2">
+                    <img src="assets/images/portfolio/IMG-20250212-WA0046.jpg" alt="PIK Luxury Residence" class="w-full aspect-video md:aspect-[16/10] object-cover hover-zoom-img">
+                </div>
+            </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="max-w-7xl mx-auto px-6 mb-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+                <!-- Image Section -->
+                <div class="lg:col-span-8 group overflow-hidden">
+                    <img src="assets/images/portfolio/IMG-20250214-WA0018.jpg" alt="Kuningan Boutique Hotel" class="w-full aspect-video md:aspect-[16/10] object-cover hover-zoom-img">
+                </div>
+                
+                <!-- Content Section -->
+                <div class="lg:col-span-4 flex flex-col justify-center">
+                    <div class="mb-4">
+                        <span class="text-xs font-bold tracking-widest text-gs-gold uppercase">Hospitality</span>
+                    </div>
+                    <h2 class="font-serif text-3xl lg:text-4xl font-bold mb-6">Kuningan Boutique Hotel</h2>
+                    
+                    <div class="space-y-4 mb-8 text-sm md:text-base border-t border-b border-gs-lightgray py-6">
+                        <div class="flex justify-between">
+                            <span class="text-gs-gray">Material Utama</span>
+                            <span class="font-bold">Verde Amber</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gs-gray">Skala Proyek</span>
+                            <span class="font-bold">1,200 m²</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gs-gray">Aplikasi</span>
+                            <span class="font-bold">Bar Counter & Facade</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gs-gray leading-relaxed">Penggunaan marmer eksotis Verde Amber menciptakan *focal point* yang dramatis namun tetap elegan pada area resepsionis hotel.</p>
+                </div>
+            </div>
+        </article>
     </section>
 
-    <!-- Floating CTA -->
-    <a href="https://wa.me/6281287875820" target="_blank" class="floating-cta">
-        <span>Cek stok & harga: WA 0812-8787-5820 | globalstoneofficial.com</span>
-    </a>
+    <!-- Sticky Floating CTA -->
+    <div class="fixed bottom-0 left-0 w-full bg-gs-charcoal text-white z-50 border-t border-gs-gold/30">
+        <a href="https://wa.me/6281287875820" target="_blank" class="flex justify-center items-center py-4 px-4 hover:bg-black transition-colors group">
+            <svg class="w-5 h-5 mr-3 text-green-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <span class="font-medium text-sm md:text-base tracking-wide">Cek Ketersediaan & Penawaran Harga: 0812-8787-5820</span>
+        </a>
+    </div>
 
 </body>
 </html>

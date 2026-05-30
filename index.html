@@ -4,151 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Stone | Stok Lengkap. Proyek Lancar.</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gs-offwhite': '#FAFAFA',
+                        'gs-charcoal': '#1C1C1C',
+                        'gs-gold': '#B89B5E',
+                        'gs-gray': '#8E8E8E',
+                        'gs-lightgray': '#F0F0F0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Specific Home Styles */
-        .hero {
-            background-color: var(--bg-light);
-            background-image: linear-gradient(rgba(11, 15, 25, 0.85), rgba(11, 15, 25, 0.85)), url('assets/images/hero/MONACO GREY DINDING 1.png');
-            background-size: cover;
-            background-position: center;
-            padding: 8rem 0;
-            border-bottom: 1px solid #E5E7EB;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            color: var(--steel-blue);
-            letter-spacing: -1px;
-            line-height: 1.1;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--concrete-grey);
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-        }
-
-        .uvp-section {
-            background-color: var(--bg-light);
-            position: relative;
-        }
-
-        .uvp-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .uvp-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            padding: 3rem 2rem;
-            border-radius: 8px;
-            border-top: 4px solid var(--steel-blue);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .uvp-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border-color: rgba(59, 130, 246, 0.3);
-        }
-
-        .uvp-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .uvp-card p {
-            color: var(--concrete-grey);
-        }
-
-        /* Padding bottom to prevent CTA overlap */
-        body {
-            padding-bottom: 80px; 
-        }
-
-        /* Mobile specific styles */
-        @media (max-width: 768px) {
-            .hero { padding: 4rem 0; }
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1rem; margin-bottom: 2rem; }
-            .hero .btn { 
-                display: block; 
-                width: 100%; 
-                text-align: center; 
-                margin-left: 0 !important; 
-                margin-bottom: 1rem; 
-            }
-            .uvp-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
-<body>
+<body class="bg-gs-offwhite text-gs-charcoal font-sans antialiased pb-24">
 
-    <header>
-        <div class="container nav-container">
-            <div class="logo">Global Stone</div>
+    <!-- Header -->
+    <header class="bg-gs-offwhite/90 backdrop-blur-md sticky top-0 z-50 border-b border-gs-lightgray transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-2xl font-serif font-bold tracking-tight text-gs-charcoal">
+                Global Stone.
+            </div>
             <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="materials.html">Stock Update</a></li>
-                    <li><a href="showroom.html">Showroom Virtual</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
+                <ul class="flex flex-wrap justify-center gap-6 md:gap-8 text-sm font-medium text-gs-gray">
+                    <li><a href="index.html" class="text-gs-charcoal border-b-2 border-gs-charcoal pb-1">Home</a></li>
+                    <li><a href="materials.html" class="hover:text-gs-charcoal transition-colors">Stock Update</a></li>
+                    <li><a href="showroom.html" class="hover:text-gs-charcoal transition-colors">Showroom Virtual</a></li>
+                    <li><a href="portfolio.html" class="hover:text-gs-charcoal transition-colors">Portfolio</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>Stok Lengkap.<br>Proyek Lancar.</h1>
-            <p>Distributor batu alam B2B terpercaya. Kami memastikan material Anda selalu tersedia untuk menghindari hambatan proyek.</p>
-            <a href="materials.html" class="btn">Lihat Stok Terkini</a>
-            <a href="portfolio.html" class="btn btn-outline" style="margin-left: 1rem;">Lihat Portfolio</a>
+    <!-- Cinematic Hero Section -->
+    <!-- We use the high-res image and a subtle gradient overlay -->
+    <section class="relative w-full h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+        <!-- Background Image Slot -->
+        <div class="absolute inset-0 w-full h-full">
+            <img src="assets/images/hero/MONACO GREY DINDING 1.png" alt="Global Stone Premium Marble Slab" class="w-full h-full object-cover">
+            <!-- Overlay to ensure text readability while keeping the image natural -->
+            <div class="absolute inset-0 bg-gradient-to-t from-gs-charcoal/80 via-gs-charcoal/30 to-transparent"></div>
         </div>
-    </section>
 
-    <section class="section uvp-section">
-        <div class="container">
-            <div class="text-center mb-8">
-                <h2>Mengapa Memilih Global Stone?</h2>
-                <p style="color: var(--concrete-grey); margin-top: 1rem;">Keandalan tanpa kompromi untuk kontraktor dan developer.</p>
-            </div>
-            
-            <div class="uvp-grid">
-                <div class="uvp-card">
-                    <h3>Ready Stock Terbesar</h3>
-                    <p>Gudang kami di Jakarta Utara menyimpan ribuan meter persegi slab batu alam. Tidak perlu menunggu inden berbulan-bulan, material siap dikirim hari ini juga.</p>
-                </div>
-                <div class="uvp-card">
-                    <h3>Transparansi Harga</h3>
-                    <p>Harga jelas, terukur, dan kompetitif khusus B2B. Tanpa biaya tersembunyi, memudahkan estimasi anggaran proyek Anda secara akurat.</p>
-                </div>
-                <div class="uvp-card">
-                    <h3>Kualitas Konsisten</h3>
-                    <p>Inspeksi ketat sebelum pengiriman memastikan setiap slab memenuhi standar arsitektural tertinggi tanpa drama di lapangan.</p>
-                </div>
+        <!-- Hero Content -->
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center mt-20">
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                Stok Lengkap.<br/>Proyek Lancar.
+            </h1>
+            <p class="text-lg md:text-xl text-white/90 font-light max-w-2xl mx-auto mb-10 drop-shadow-md">
+                Distributor batu alam terpercaya untuk kontraktor & arsitek B2B. Material premium selalu tersedia, memastikan proyek Anda berjalan tanpa hambatan.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="materials.html" class="inline-block bg-white text-gs-charcoal font-semibold px-8 py-4 rounded-sm hover:bg-gs-lightgray transition-colors shadow-lg">
+                    Lihat Stok Terkini
+                </a>
+                <a href="https://wa.me/6281287875820" target="_blank" class="inline-block bg-gs-charcoal text-white font-semibold px-8 py-4 rounded-sm hover:bg-black border border-white/20 transition-colors shadow-lg">
+                    Hubungi via WhatsApp
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Floating CTA -->
-    <a href="https://wa.me/6281287875820" target="_blank" class="floating-cta">
-        <span>Cek stok & harga: WA 0812-8787-5820 | globalstoneofficial.com</span>
-    </a>
+    <!-- UVP Section (Why Choose Us) -->
+    <section class="py-24 bg-gs-offwhite">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-gs-charcoal mb-4">Mengapa Memilih Global Stone?</h2>
+                <div class="w-16 h-1 bg-gs-gold mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+                <!-- UVP 1 -->
+                <div class="text-center group">
+                    <div class="w-16 h-16 mx-auto bg-gs-lightgray rounded-full flex items-center justify-center mb-6 group-hover:bg-gs-charcoal transition-colors duration-300">
+                        <!-- Icon Placeholder (SVG) -->
+                        <svg class="w-8 h-8 text-gs-charcoal group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold mb-3">Ready Stock Terbesar</h3>
+                    <p class="text-gs-gray leading-relaxed">Gudang kami di Jakarta Utara menampung ribuan meter persegi slab siap kirim. Tidak perlu menunggu inden berbulan-bulan.</p>
+                </div>
+                
+                <!-- UVP 2 -->
+                <div class="text-center group">
+                    <div class="w-16 h-16 mx-auto bg-gs-lightgray rounded-full flex items-center justify-center mb-6 group-hover:bg-gs-charcoal transition-colors duration-300">
+                        <svg class="w-8 h-8 text-gs-charcoal group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold mb-3">Transparansi Harga</h3>
+                    <p class="text-gs-gray leading-relaxed">Sistem harga flat B2B. Penawaran resmi, akurat, tanpa biaya tersembunyi. Memudahkan perhitungan RAB proyek Anda.</p>
+                </div>
+
+                <!-- UVP 3 -->
+                <div class="text-center group">
+                    <div class="w-16 h-16 mx-auto bg-gs-lightgray rounded-full flex items-center justify-center mb-6 group-hover:bg-gs-charcoal transition-colors duration-300">
+                        <svg class="w-8 h-8 text-gs-charcoal group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold mb-3">Kualitas Konsisten</h3>
+                    <p class="text-gs-gray leading-relaxed">Seleksi ketat sejak dari quarry. Kami menyediakan foto slab beresolusi tinggi sebelum pengiriman untuk kepastian visual.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky Floating CTA -->
+    <div class="fixed bottom-0 left-0 w-full bg-gs-charcoal text-white z-50 border-t border-gs-gold/30">
+        <a href="https://wa.me/6281287875820" target="_blank" class="flex justify-center items-center py-4 px-4 hover:bg-black transition-colors group">
+            <svg class="w-5 h-5 mr-3 text-green-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <span class="font-medium text-sm md:text-base tracking-wide">Cek Ketersediaan & Penawaran Harga: 0812-8787-5820</span>
+        </a>
+    </div>
 
 </body>
 </html>
