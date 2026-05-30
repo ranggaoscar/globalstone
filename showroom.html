@@ -102,6 +102,17 @@
             50% { transform: translateX(-50%) scale(1.05); }
             100% { transform: translateX(-50%) scale(1); }
         }
+
+        /* Mobile specific styles */
+        @media (max-width: 768px) {
+            .instruction-overlay {
+                width: 90%;
+                font-size: 0.85rem;
+                bottom: 120px;
+                padding: 0.8rem 1rem;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>

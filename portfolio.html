@@ -98,6 +98,15 @@
             padding-bottom: 80px; 
             background-color: var(--bg-light);
         }
+
+        /* Mobile specific styles */
+        @media (max-width: 768px) {
+            .page-header { padding: 2.5rem 0; }
+            .page-header h1 { font-size: 2rem; }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
