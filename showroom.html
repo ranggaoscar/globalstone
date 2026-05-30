@@ -12,9 +12,9 @@
             left: 0;
             width: 100%;
             z-index: 10;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px);
-            border-bottom: 1px solid rgba(0,0,0,0.1);
+            background-color: rgba(11, 15, 25, 0.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
         }
 
         body {
@@ -34,14 +34,15 @@
             cursor: grabbing;
         }
 
-        /* 3D Tooltip Overlay */
+        /* 3D Tooltip Overlay (Holographic HUD style) */
         #data-tooltip {
             position: absolute;
             top: -1000px;
             left: -1000px;
-            background: rgba(255, 255, 255, 0.98);
-            border: 1px solid var(--steel-blue);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(59, 130, 246, 0.2);
             padding: 1.5rem;
             border-radius: 8px;
             pointer-events: none;
@@ -49,6 +50,7 @@
             transition: opacity 0.2s ease;
             z-index: 20;
             min-width: 250px;
+            color: var(--clean-white);
         }
 
         #data-tooltip.visible {
@@ -60,8 +62,9 @@
             font-weight: 800;
             color: var(--steel-blue);
             margin-bottom: 1rem;
-            border-bottom: 2px solid var(--bg-light);
+            border-bottom: 2px solid rgba(255,255,255,0.1);
             padding-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
         }
 
         .tooltip-data-row {
@@ -78,7 +81,7 @@
 
         .tooltip-value {
             font-weight: 700;
-            color: var(--text-dark);
+            color: var(--clean-white);
         }
         
         .instruction-overlay {
@@ -86,13 +89,15 @@
             bottom: 100px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(255,255,255,0.9);
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(5px);
             padding: 1rem 2rem;
             border-radius: 50px;
             font-weight: 600;
-            color: var(--steel-blue);
+            color: var(--clean-white);
+            border: 1px solid rgba(255,255,255,0.1);
             pointer-events: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             z-index: 5;
             animation: pulse 2s infinite;
         }

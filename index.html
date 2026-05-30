@@ -9,7 +9,7 @@
         /* Specific Home Styles */
         .hero {
             background-color: var(--bg-light);
-            background-image: linear-gradient(rgba(249, 250, 251, 0.85), rgba(249, 250, 251, 0.85)), url('assets/images/hero/hero-bg.jpg');
+            background-image: linear-gradient(rgba(11, 15, 25, 0.85), rgba(11, 15, 25, 0.85)), url('assets/images/hero/MONACO GREY DINDING 1.png');
             background-size: cover;
             background-position: center;
             padding: 8rem 0;
@@ -37,7 +37,8 @@
         }
 
         .uvp-section {
-            background-color: var(--clean-white);
+            background-color: var(--bg-light);
+            position: relative;
         }
 
         .uvp-grid {
@@ -48,10 +49,19 @@
         }
 
         .uvp-card {
-            background: var(--bg-light);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
             padding: 3rem 2rem;
             border-radius: 8px;
             border-top: 4px solid var(--steel-blue);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .uvp-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-color: rgba(59, 130, 246, 0.3);
         }
 
         .uvp-card h3 {

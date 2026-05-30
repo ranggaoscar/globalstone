@@ -1,110 +1,128 @@
-// Data batu simulasi
+// Data batu simulasi + link gambar nyata
 const stoneData = [
-    { name: "Monaco Grey", category: "Marble", m2: "976", slab: "183" },
-    { name: "Moon Cream", category: "Marble", m2: "1,245", slab: "210" },
-    { name: "Calacatta Gold", category: "Marble", m2: "450", slab: "85" },
-    { name: "Nero Assoluto", category: "Granite", m2: "2,100", slab: "350" },
-    { name: "Compress Statuario", category: "Artificial", m2: "850", slab: "150" }
+    { name: "Gucci Black", category: "Marble", m2: "976", slab: "183", img: "assets/images/materials/GUCCI BLACK BOOKMATCH 3.jpg" },
+    { name: "Lavish Gold", category: "Marble", m2: "1,245", slab: "210", img: "assets/images/materials/LAVISH GOLD.jpeg" },
+    { name: "Statuario Turkey", category: "Marble", m2: "450", slab: "85", img: "assets/images/materials/STATUARIO TURKEY 2.jpg" },
+    { name: "Verde Amber", category: "Exotic", m2: "2,100", slab: "350", img: "assets/images/materials/VERDE AMBER.jpg" }
 ];
 
-// Inisialisasi Scene
+// Inisialisasi Scene - Dark Cinematic
 const container = document.getElementById('canvas-container');
 const scene = new THREE.Scene();
-scene.background = new THREE.Color('#F9FAFB'); // Sama dengan --bg-light
-scene.fog = new THREE.Fog('#F9FAFB', 10, 50);
+scene.background = new THREE.Color('#0B0F19'); // Pitch black / deep charcoal
+scene.fog = new THREE.FogExp2('#0B0F19', 0.03); // Cinematic depth fog
 
 // Kamera
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 8, 25);
+camera.position.set(0, 5, 22);
 
 // Renderer
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Softer shadows
+renderer.toneMapping = THREE.ACESFilmicToneMapping; // Cinematic tone mapping
+renderer.toneMappingExposure = 1.0;
 container.appendChild(renderer.domElement);
 
 // Controls (Orbit)
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
-controls.maxPolarAngle = Math.PI / 2 - 0.1; 
-controls.minDistance = 10;
-controls.maxDistance = 40;
+controls.maxPolarAngle = Math.PI / 2 - 0.05; 
+controls.minDistance = 8;
+controls.maxDistance = 35;
+controls.target.set(0, 3, 0);
 
-// Pencahayaan
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+// Pencahayaan Dramatis
+const ambientLight = new THREE.AmbientLight(0x223344, 0.3); // Low bluish ambient
 scene.add(ambientLight);
 
-const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
-dirLight.position.set(10, 20, 10);
-dirLight.castShadow = true;
-dirLight.shadow.mapSize.width = 1024;
-dirLight.shadow.mapSize.height = 1024;
-scene.add(dirLight);
+// Spotlight utama
+const spotLight = new THREE.SpotLight(0xffffff, 5);
+spotLight.position.set(0, 20, 10);
+spotLight.angle = Math.PI / 4;
+spotLight.penumbra = 0.5;
+spotLight.decay = 2;
+spotLight.distance = 50;
+spotLight.castShadow = true;
+spotLight.shadow.mapSize.width = 2048;
+spotLight.shadow.mapSize.height = 2048;
+spotLight.shadow.bias = -0.0001;
+scene.add(spotLight);
 
-// Lantai (Grid)
+// Lampu aksen biru (High-tech feel)
+const accentLight = new THREE.PointLight(0x3B82F6, 1.5);
+accentLight.position.set(-10, -5, -10);
+scene.add(accentLight);
+
+// Lantai (Grid / Reflektif)
 const planeGeo = new THREE.PlaneGeometry(100, 100);
 const planeMat = new THREE.MeshStandardMaterial({ 
-    color: 0xeeeeee,
-    roughness: 0.8
+    color: 0x050810,
+    roughness: 0.1, // Highly reflective floor
+    metalness: 0.8
 });
 const plane = new THREE.Mesh(planeGeo, planeMat);
 plane.rotation.x = -Math.PI / 2;
 plane.receiveShadow = true;
 scene.add(plane);
 
-const gridHelper = new THREE.GridHelper(100, 100, 0xdddddd, 0xdddddd);
+// Grid halus gaya cyber
+const gridHelper = new THREE.GridHelper(100, 100, 0x3B82F6, 0x111827);
 gridHelper.position.y = 0.01;
+gridHelper.material.opacity = 0.2;
+gridHelper.material.transparent = true;
 scene.add(gridHelper);
 
-// Material Slab Batu
-const defaultMaterial = new THREE.MeshStandardMaterial({ 
-    color: 0x6B7280, // Concrete Grey
-    roughness: 0.2,
-    metalness: 0.1
-});
+// Texture Loader
+const textureLoader = new THREE.TextureLoader();
 
-const hoverMaterial = new THREE.MeshStandardMaterial({ 
-    color: 0x1B4F8A, // Steel Blue
-    roughness: 0.1,
-    metalness: 0.3,
-    emissive: 0x1B4F8A,
-    emissiveIntensity: 0.2
-});
-
-// Membuat Slab Batu
+// Membuat Slab Batu dengan Tekstur Asli
 const slabs = [];
 const group = new THREE.Group();
 scene.add(group);
 
-// Dimensi slab (lebar, tinggi, tebal)
 const slabGeometry = new THREE.BoxGeometry(4, 6, 0.2);
 
 stoneData.forEach((data, index) => {
-    const mesh = new THREE.Mesh(slabGeometry, defaultMaterial.clone());
+    // Muat tekstur
+    const texture = textureLoader.load(data.img);
+    texture.colorSpace = THREE.SRGBColorSpace;
     
-    // Susun sejajar seperti di gallery
-    const xPos = (index - (stoneData.length - 1) / 2) * 5;
+    // Material default dengan gambar
+    const material = new THREE.MeshStandardMaterial({ 
+        map: texture,
+        roughness: 0.3,
+        metalness: 0.1,
+        color: 0xcccccc
+    });
     
-    mesh.position.set(
-        xPos,
-        3, // Setengah tinggi slab
-        0
-    );
+    const mesh = new THREE.Mesh(slabGeometry, material);
     
+    const xPos = (index - (stoneData.length - 1) / 2) * 5.5;
+    
+    mesh.position.set(xPos, 3, 0);
     mesh.castShadow = true;
     mesh.receiveShadow = true;
     
-    // Simpan data di userData mesh
+    // Simpan material asli untuk reset saat di-hover
     mesh.userData = data;
     mesh.userData.originalY = mesh.position.y;
+    mesh.userData.originalMaterial = material;
+    
+    // Hover material (lebih menyala)
+    const hoverMat = material.clone();
+    hoverMat.emissive = new THREE.Color(0x3B82F6);
+    hoverMat.emissiveIntensity = 0.2; // Glowing effect
+    mesh.userData.hoverMaterial = hoverMat;
     
     group.add(mesh);
     slabs.push(mesh);
 });
 
-// Interaksi (Raycaster)
+// Interaksi
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 let hoveredMesh = null;
@@ -120,14 +138,14 @@ function onMouseMove(event) {
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     
     if (hoveredMesh) {
-        tooltip.style.left = (event.clientX + 15) + 'px';
-        tooltip.style.top = (event.clientY + 15) + 'px';
+        // Efek smooth follow untuk HUD tooltip
+        tooltip.style.left = (event.clientX + 20) + 'px';
+        tooltip.style.top = (event.clientY + 20) + 'px';
     }
 }
 
 window.addEventListener('mousemove', onMouseMove);
 
-// Resize handler
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -140,7 +158,6 @@ function animate() {
     requestAnimationFrame(animate);
     
     const time = clock.getElapsedTime();
-    
     controls.update();
     
     raycaster.setFromCamera(mouse, camera);
@@ -151,10 +168,10 @@ function animate() {
         
         if (hoveredMesh !== object) {
             if (hoveredMesh) {
-                hoveredMesh.material = defaultMaterial.clone();
+                hoveredMesh.material = hoveredMesh.userData.originalMaterial;
             }
             hoveredMesh = object;
-            hoveredMesh.material = hoverMaterial;
+            hoveredMesh.material = hoveredMesh.userData.hoverMaterial;
             
             const data = hoveredMesh.userData;
             ttTitle.innerText = data.name;
@@ -167,7 +184,7 @@ function animate() {
         }
     } else {
         if (hoveredMesh) {
-            hoveredMesh.material = defaultMaterial.clone();
+            hoveredMesh.material = hoveredMesh.userData.originalMaterial;
             hoveredMesh = null;
             tooltip.classList.remove('visible');
             document.body.style.cursor = 'default';
@@ -176,13 +193,20 @@ function animate() {
     
     // Efek mengambang lambat
     slabs.forEach((mesh, index) => {
-        const offset = index * 0.5;
+        const offset = index * 0.8;
         if(mesh !== hoveredMesh) {
-           mesh.position.y = mesh.userData.originalY + Math.sin(time * 2 + offset) * 0.1; 
+           mesh.position.y = mesh.userData.originalY + Math.sin(time * 1.5 + offset) * 0.08; 
+           // Berputar sangat pelan
+           mesh.rotation.y = Math.sin(time * 0.5 + offset) * 0.05;
         } else {
-            mesh.position.y = THREE.MathUtils.lerp(mesh.position.y, mesh.userData.originalY + 0.5, 0.1);
+            mesh.position.y = THREE.MathUtils.lerp(mesh.position.y, mesh.userData.originalY + 0.4, 0.1);
+            mesh.rotation.y = THREE.MathUtils.lerp(mesh.rotation.y, 0, 0.1);
         }
     });
+    
+    // Spotlight muter pelan menyapu scene
+    spotLight.position.x = Math.sin(time * 0.5) * 10;
+    spotLight.position.z = 10 + Math.cos(time * 0.5) * 5;
     
     renderer.render(scene, camera);
 }

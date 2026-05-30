@@ -33,23 +33,25 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: var(--clean-white);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
             padding: 2rem 3rem;
             border-radius: 8px;
-            border: 1px solid #E5E7EB;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         .stock-item:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.4);
         }
 
         .stock-name {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--text-dark);
+            color: var(--clean-white);
             margin-bottom: 0.5rem;
         }
 
@@ -151,10 +153,10 @@
                 <!-- Stock Item 1 -->
                 <div class="stock-item">
                     <div class="stock-info-wrapper">
-                        <img src="assets/images/materials/monaco-grey.jpg" alt="Monaco Grey" class="material-thumb">
+                        <img src="assets/images/materials/GUCCI BLACK BOOKMATCH 3.jpg" alt="Gucci Black" class="material-thumb">
                         <div>
                             <div class="stock-category">Marble</div>
-                            <div class="stock-name">Monaco Grey</div>
+                            <div class="stock-name">Gucci Black</div>
                         </div>
                     </div>
                     <div class="stock-data-container">
@@ -172,10 +174,10 @@
                 <!-- Stock Item 2 -->
                 <div class="stock-item">
                     <div class="stock-info-wrapper">
-                        <img src="assets/images/materials/moon-cream.jpg" alt="Moon Cream" class="material-thumb">
+                        <img src="assets/images/materials/LAVISH GOLD.jpeg" alt="Lavish Gold" class="material-thumb">
                         <div>
                             <div class="stock-category">Marble</div>
-                            <div class="stock-name">Moon Cream</div>
+                            <div class="stock-name">Lavish Gold</div>
                         </div>
                     </div>
                     <div class="stock-data-container">
@@ -193,10 +195,10 @@
                 <!-- Stock Item 3 -->
                 <div class="stock-item">
                     <div class="stock-info-wrapper">
-                        <img src="assets/images/materials/calacatta-gold.jpg" alt="Calacatta Gold" class="material-thumb">
+                        <img src="assets/images/materials/STATUARIO TURKEY 2.jpg" alt="Statuario Turkey" class="material-thumb">
                         <div>
                             <div class="stock-category">Marble</div>
-                            <div class="stock-name">Calacatta Gold</div>
+                            <div class="stock-name">Statuario Turkey</div>
                         </div>
                     </div>
                     <div class="stock-data-container">
@@ -214,10 +216,10 @@
                  <!-- Stock Item 4 -->
                  <div class="stock-item">
                     <div class="stock-info-wrapper">
-                        <img src="assets/images/materials/nero-assoluto.jpg" alt="Nero Assoluto" class="material-thumb">
+                        <img src="assets/images/materials/VERDE AMBER.jpg" alt="Verde Amber" class="material-thumb">
                         <div>
-                            <div class="stock-category">Granite</div>
-                            <div class="stock-name">Nero Assoluto</div>
+                            <div class="stock-category">Exotic</div>
+                            <div class="stock-name">Verde Amber</div>
                         </div>
                     </div>
                     <div class="stock-data-container">
