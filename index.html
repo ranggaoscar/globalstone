@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Stone | Stok Lengkap. Proyek Lancar.</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Specific Home Styles */
+        .hero {
+            background-color: var(--bg-light);
+            background-image: linear-gradient(rgba(249, 250, 251, 0.85), rgba(249, 250, 251, 0.85)), url('assets/images/hero/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 8rem 0;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--steel-blue);
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--concrete-grey);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .uvp-section {
+            background-color: var(--clean-white);
+        }
+
+        .uvp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .uvp-card {
+            background: var(--bg-light);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            border-top: 4px solid var(--steel-blue);
+        }
+
+        .uvp-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .uvp-card p {
+            color: var(--concrete-grey);
+        }
+
+        /* Padding bottom to prevent CTA overlap */
+        body {
+            padding-bottom: 80px; 
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Global Stone</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="materials.html">Stock Update</a></li>
+                    <li><a href="showroom.html">Showroom Virtual</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Stok Lengkap.<br>Proyek Lancar.</h1>
+            <p>Distributor batu alam B2B terpercaya. Kami memastikan material Anda selalu tersedia untuk menghindari hambatan proyek.</p>
+            <a href="materials.html" class="btn">Lihat Stok Terkini</a>
+            <a href="portfolio.html" class="btn btn-outline" style="margin-left: 1rem;">Lihat Portfolio</a>
+        </div>
+    </section>
+
+    <section class="section uvp-section">
+        <div class="container">
+            <div class="text-center mb-8">
+                <h2>Mengapa Memilih Global Stone?</h2>
+                <p style="color: var(--concrete-grey); margin-top: 1rem;">Keandalan tanpa kompromi untuk kontraktor dan developer.</p>
+            </div>
+            
+            <div class="uvp-grid">
+                <div class="uvp-card">
+                    <h3>Ready Stock Terbesar</h3>
+                    <p>Gudang kami di Jakarta Utara menyimpan ribuan meter persegi slab batu alam. Tidak perlu menunggu inden berbulan-bulan, material siap dikirim hari ini juga.</p>
+                </div>
+                <div class="uvp-card">
+                    <h3>Transparansi Harga</h3>
+                    <p>Harga jelas, terukur, dan kompetitif khusus B2B. Tanpa biaya tersembunyi, memudahkan estimasi anggaran proyek Anda secara akurat.</p>
+                </div>
+                <div class="uvp-card">
+                    <h3>Kualitas Konsisten</h3>
+                    <p>Inspeksi ketat sebelum pengiriman memastikan setiap slab memenuhi standar arsitektural tertinggi tanpa drama di lapangan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating CTA -->
+    <a href="https://wa.me/6281287875820" target="_blank" class="floating-cta">
+        <span>Cek stok & harga: WA 0812-8787-5820 | globalstoneofficial.com</span>
+    </a>
+
+</body>
+</html>

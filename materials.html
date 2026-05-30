@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Update | Global Stone</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header {
+            background-color: var(--steel-blue);
+            color: var(--clean-white);
+            padding: 4rem 0;
+        }
+
+        .page-header h1 {
+            color: var(--clean-white);
+            font-size: 2.5rem;
+        }
+
+        .page-header p {
+            color: #E5E7EB;
+            margin-top: 0.5rem;
+        }
+
+        .stock-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .stock-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--clean-white);
+            padding: 2rem 3rem;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .stock-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .stock-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .stock-category {
+            color: var(--concrete-grey);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .stock-data-container {
+            display: flex;
+            gap: 3rem;
+            text-align: right;
+        }
+
+        .stock-data-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .stock-unit {
+            color: var(--concrete-grey);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: -5px;
+        }
+        
+        .updated-info {
+            text-align: right;
+            color: var(--concrete-grey);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        body {
+            padding-bottom: 80px; 
+            background-color: var(--bg-light);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Global Stone</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="materials.html" class="active">Stock Update</a></li>
+                    <li><a href="showroom.html">Showroom Virtual</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Stock Update</h1>
+            <p>Data inventaris gudang Jakarta Utara. Diperbarui secara berkala.</p>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <div class="updated-info">
+                Terakhir diperbarui: Hari ini, 08:00 WIB
+            </div>
+            
+            <div class="stock-grid">
+                
+                <!-- Stock Item 1 -->
+                <div class="stock-item">
+                    <div class="stock-info-wrapper">
+                        <img src="assets/images/materials/monaco-grey.jpg" alt="Monaco Grey" class="material-thumb">
+                        <div>
+                            <div class="stock-category">Marble</div>
+                            <div class="stock-name">Monaco Grey</div>
+                        </div>
+                    </div>
+                    <div class="stock-data-container">
+                        <div class="stock-data-group">
+                            <span class="data-number">976</span>
+                            <span class="stock-unit">m2 ready stock</span>
+                        </div>
+                        <div class="stock-data-group">
+                            <span class="data-number">183</span>
+                            <span class="stock-unit">slab</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stock Item 2 -->
+                <div class="stock-item">
+                    <div class="stock-info-wrapper">
+                        <img src="assets/images/materials/moon-cream.jpg" alt="Moon Cream" class="material-thumb">
+                        <div>
+                            <div class="stock-category">Marble</div>
+                            <div class="stock-name">Moon Cream</div>
+                        </div>
+                    </div>
+                    <div class="stock-data-container">
+                        <div class="stock-data-group">
+                            <span class="data-number">1,245</span>
+                            <span class="stock-unit">m2 ready stock</span>
+                        </div>
+                        <div class="stock-data-group">
+                            <span class="data-number">210</span>
+                            <span class="stock-unit">slab</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stock Item 3 -->
+                <div class="stock-item">
+                    <div class="stock-info-wrapper">
+                        <img src="assets/images/materials/calacatta-gold.jpg" alt="Calacatta Gold" class="material-thumb">
+                        <div>
+                            <div class="stock-category">Marble</div>
+                            <div class="stock-name">Calacatta Gold</div>
+                        </div>
+                    </div>
+                    <div class="stock-data-container">
+                        <div class="stock-data-group">
+                            <span class="data-number">450</span>
+                            <span class="stock-unit">m2 ready stock</span>
+                        </div>
+                        <div class="stock-data-group">
+                            <span class="data-number">85</span>
+                            <span class="stock-unit">slab</span>
+                        </div>
+                    </div>
+                </div>
+                
+                 <!-- Stock Item 4 -->
+                 <div class="stock-item">
+                    <div class="stock-info-wrapper">
+                        <img src="assets/images/materials/nero-assoluto.jpg" alt="Nero Assoluto" class="material-thumb">
+                        <div>
+                            <div class="stock-category">Granite</div>
+                            <div class="stock-name">Nero Assoluto</div>
+                        </div>
+                    </div>
+                    <div class="stock-data-container">
+                        <div class="stock-data-group">
+                            <span class="data-number">2,100</span>
+                            <span class="stock-unit">m2 ready stock</span>
+                        </div>
+                        <div class="stock-data-group">
+                            <span class="data-number">350</span>
+                            <span class="stock-unit">slab</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating CTA -->
+    <a href="https://wa.me/6281287875820" target="_blank" class="floating-cta">
+        <span>Cek stok & harga: WA 0812-8787-5820 | globalstoneofficial.com</span>
+    </a>
+
+</body>
+</html>

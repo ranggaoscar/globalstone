@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Global Stone</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header {
+            background-color: var(--steel-blue);
+            color: var(--clean-white);
+            padding: 4rem 0;
+        }
+
+        .page-header h1 {
+            color: var(--clean-white);
+            font-size: 2.5rem;
+        }
+
+        .page-header p {
+            color: #E5E7EB;
+            margin-top: 0.5rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-card {
+            background: var(--clean-white);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-img-placeholder {
+            height: 200px;
+            background-color: var(--concrete-grey);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--clean-white);
+            font-weight: 600;
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--steel-blue);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .portfolio-data {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #f3f4f6;
+            padding-bottom: 0.5rem;
+        }
+
+        .data-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .data-label {
+            color: var(--concrete-grey);
+            font-weight: 600;
+        }
+
+        .data-value {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        body {
+            padding-bottom: 80px; 
+            background-color: var(--bg-light);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Global Stone</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="materials.html">Stock Update</a></li>
+                    <li><a href="showroom.html">Showroom Virtual</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Portfolio Proyek</h1>
+            <p>Rekam jejak Global Stone dalam menyuplai material untuk proyek berskala besar.</p>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            
+            <div class="portfolio-grid">
+                
+                <!-- Portfolio 1 -->
+                <div class="portfolio-card">
+                    <img src="assets/images/portfolio/sudirman.jpg" alt="Sudirman Office Tower" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Sudirman Office Tower</h3>
+                        <div class="portfolio-data">
+                            <div class="data-row">
+                                <span class="data-label">Material:</span>
+                                <span class="data-value">Monaco Grey</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="data-label">Total Volume:</span>
+                                <span class="data-value">4,500 m2</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="data-label">Durasi Supply:</span>
+                                <span class="data-value">14 Hari</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio 2 -->
+                <div class="portfolio-card">
+                    <img src="assets/images/portfolio/pik.jpg" alt="PIK Luxury Residence" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">PIK Luxury Residence</h3>
+                        <div class="portfolio-data">
+                            <div class="data-row">
+                                <span class="data-label">Material:</span>
+                                <span class="data-value">Calacatta Gold</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="data-label">Total Volume:</span>
+                                <span class="data-value">1,200 m2</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="data-label">Durasi Supply:</span>
+                                <span class="data-value">5 Hari</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio 3 -->
+                <div class="portfolio-card">
+                    <img src="assets/images/portfolio/menteng.jpg" alt="Menteng Boutique Hotel" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Menteng Boutique Hotel</h3>
+                        <div class="portfolio-data">
+                            <div class="data-row">
+                                <span class="data-label">Material:</span>
+                                <span class="data-value">Moon Cream</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="data-label">Total Volume:</span>
+                                <span class="data-value">2,800 m2</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="data-label">Durasi Supply:</span>
+                                <span class="data-value">8 Hari</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio 4 -->
+                <div class="portfolio-card">
+                    <img src="assets/images/portfolio/kuningan.jpg" alt="Kuningan Commercial" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Kuningan Commercial</h3>
+                        <div class="portfolio-data">
+                            <div class="data-row">
+                                <span class="data-label">Material:</span>
+                                <span class="data-value">Nero Assoluto</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="data-label">Total Volume:</span>
+                                <span class="data-value">3,100 m2</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="data-label">Durasi Supply:</span>
+                                <span class="data-value">10 Hari</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating CTA -->
+    <a href="https://wa.me/6281287875820" target="_blank" class="floating-cta">
+        <span>Cek stok & harga: WA 0812-8787-5820 | globalstoneofficial.com</span>
+    </a>
+
+</body>
+</html>
