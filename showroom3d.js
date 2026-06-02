@@ -13,7 +13,7 @@ const showroomMaterialFiles = [
     "White Patagonia Magrade 3,20 x 1,95.png"
 ];
 
-const assetVersion = "20260602-showroom-cache";
+const assetVersion = "20260602-vr360";
 const materialBasePath = "assets/images/Material Showroom Virtual";
 const formatNumber = (value) => value.toFixed(2).replace(".", ",");
 const toTitleCase = (text) => text.replace(/\w\S*/g, (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase());
@@ -55,6 +55,8 @@ const ttSlab = document.getElementById("tt-slab");
 let hovered = null;
 let selected = null;
 let isTransitioning = true;
+let isTour360 = false;
+let xrSession = null;
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color("#101217");
@@ -69,6 +71,7 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.05;
+renderer.xr.enabled = true;
 container.appendChild(renderer.domElement);
 
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -78,8 +81,10 @@ controls.minDistance = 7;
 controls.maxDistance = 34;
 controls.maxPolarAngle = Math.PI / 2 - 0.08;
 controls.target.set(0, 2.2, 0);
+controls.autoRotateSpeed = 0.55;
 controls.addEventListener("start", () => {
     isTransitioning = false;
+    if (isTour360) setTour360(false);
 });
 
 const textureLoader = new THREE.TextureLoader();
@@ -94,6 +99,8 @@ const viewTargets = {
     consult: { position: new THREE.Vector3(4.8, 4.4, 10), target: new THREE.Vector3(1.5, 1.7, 3.9) }
 };
 let desiredView = viewTargets.overview;
+const tour360Btn = document.getElementById("tour360Btn");
+const vrButton = document.getElementById("vrButton");
 
 function sizeRenderer() {
     const width = container.clientWidth;
@@ -359,6 +366,7 @@ function attachViewControls() {
             const view = button.dataset.view;
             desiredView = viewTargets[view] || viewTargets.overview;
             isTransitioning = true;
+            setTour360(false);
             selected = null;
             tooltip.classList.remove("visible");
             document.querySelectorAll("[data-view]").forEach((item) => item.classList.remove("active"));
@@ -367,9 +375,76 @@ function attachViewControls() {
     });
 }
 
-function animate() {
-    requestAnimationFrame(animate);
-    const time = performance.now() * 0.001;
+function setTour360(enabled) {
+    isTour360 = enabled;
+    controls.autoRotate = enabled;
+    if (tour360Btn) {
+        tour360Btn.classList.toggle("active", enabled);
+        const label = tour360Btn.querySelector("strong");
+        if (label) label.innerText = enabled ? "Stop 360" : "360 Tour";
+    }
+}
+
+function attachTour360Control() {
+    if (!tour360Btn) return;
+    tour360Btn.addEventListener("click", () => {
+        if (!isTour360) {
+            desiredView = viewTargets.overview;
+            isTransitioning = true;
+        }
+        setTour360(!isTour360);
+    });
+}
+
+async function setupVRButton() {
+    if (!vrButton) return;
+
+    if (!navigator.xr) {
+        vrButton.classList.add("unavailable");
+        vrButton.disabled = true;
+        const label = vrButton.querySelector("strong");
+        if (label) label.innerText = "VR tidak tersedia";
+        return;
+    }
+
+    const supported = await navigator.xr.isSessionSupported("immersive-vr").catch(() => false);
+    if (!supported) {
+        vrButton.classList.add("unavailable");
+        vrButton.disabled = true;
+        const label = vrButton.querySelector("strong");
+        if (label) label.innerText = "VR tidak tersedia";
+        return;
+    }
+
+    vrButton.addEventListener("click", async () => {
+        if (xrSession) {
+            xrSession.end();
+            return;
+        }
+
+        setTour360(false);
+        const session = await navigator.xr.requestSession("immersive-vr", {
+            optionalFeatures: ["local-floor", "bounded-floor"]
+        }).catch(() => null);
+
+        if (!session) return;
+
+        xrSession = session;
+        vrButton.classList.add("active");
+        const label = vrButton.querySelector("strong");
+        if (label) label.innerText = "Exit VR";
+        await renderer.xr.setSession(session);
+
+        session.addEventListener("end", () => {
+            xrSession = null;
+            vrButton.classList.remove("active");
+            if (label) label.innerText = "Enter VR";
+        });
+    });
+}
+
+function animate(timeMs) {
+    const time = (timeMs || performance.now()) * 0.001;
 
     if (isTransitioning) {
         camera.position.lerp(desiredView.position, 0.025);
@@ -386,7 +461,7 @@ function animate() {
         }
     });
 
-    updateHover();
+    if (!renderer.xr.isPresenting) updateHover();
     controls.update();
     renderer.render(scene, camera);
 }
@@ -403,5 +478,7 @@ addWallMockup();
 addConsultationArea();
 addHotspots();
 attachViewControls();
+attachTour360Control();
+setupVRButton();
 sizeRenderer();
-animate();
+renderer.setAnimationLoop(animate);

@@ -26,7 +26,7 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="styles.css?v=20260602-showroom-cache">
+    <link rel="stylesheet" href="styles.css?v=20260602-vr360">
     <style>
         #canvas-container {
             width: 100%;
@@ -127,7 +127,7 @@
             <div class="editorial-panel p-6 md:p-8">
                 <p class="fine-label text-xs text-gs-gold mb-4">Interactive 3D View</p>
                 <h2 class="font-serif text-fluid-h3 font-bold mb-4 text-gs-charcoal">Tour cepat ruang showroom</h2>
-                <p class="text-gs-gray leading-relaxed mb-6">Geser untuk memutar kamera, cubit atau scroll untuk zoom. Di desktop, arahkan kursor ke slab dan area display. Di mobile, tap objek untuk membuka detailnya.</p>
+                <p class="text-gs-gray leading-relaxed mb-6">Geser untuk memutar kamera, cubit atau scroll untuk zoom. Aktifkan 360 Tour untuk putaran otomatis, atau Enter VR jika device dan browser mendukung WebXR.</p>
                 <div class="grid grid-cols-2 gap-3 text-sm">
                     <div class="border-t border-gs-lightgray pt-3">
                         <span class="block text-gs-gray">Zona</span>
@@ -135,12 +135,12 @@
                     </div>
                     <div class="border-t border-gs-lightgray pt-3">
                         <span class="block text-gs-gray">Interaksi</span>
-                        <strong>Rotate, zoom, tap</strong>
+                        <strong>360, zoom, VR</strong>
                     </div>
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
                 <button class="showroom-control active px-4 py-4 text-left rounded-sm" data-view="overview">
                     <span class="block text-xs uppercase tracking-widest opacity-70">View</span>
                     <strong>Showroom penuh</strong>
@@ -156,6 +156,14 @@
                 <button class="showroom-control px-4 py-4 text-left rounded-sm" data-view="consult">
                     <span class="block text-xs uppercase tracking-widest opacity-70">View</span>
                     <strong>Area konsultasi</strong>
+                </button>
+                <button class="showroom-control px-4 py-4 text-left rounded-sm" id="tour360Btn" type="button">
+                    <span class="block text-xs uppercase tracking-widest opacity-70">Mode</span>
+                    <strong>360 Tour</strong>
+                </button>
+                <button class="showroom-control px-4 py-4 text-left rounded-sm" id="vrButton" type="button">
+                    <span class="block text-xs uppercase tracking-widest opacity-70">WebXR</span>
+                    <strong>Enter VR</strong>
                 </button>
             </div>
         </div>
@@ -339,7 +347,7 @@
     <!-- Three.js Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-    <script src="showroom3d.js?v=20260602-showroom-cache"></script>
+    <script src="showroom3d.js?v=20260602-vr360"></script>
 
     <script>
         // Mobile Menu
