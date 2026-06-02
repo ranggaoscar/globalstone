@@ -13,6 +13,7 @@ const showroomMaterialFiles = [
     "White Patagonia Magrade 3,20 x 1,95.png"
 ];
 
+const assetVersion = "20260602-showroom-cache";
 const materialBasePath = "assets/images/Material Showroom Virtual";
 const formatNumber = (value) => value.toFixed(2).replace(".", ",");
 const toTitleCase = (text) => text.replace(/\w\S*/g, (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase());
@@ -32,7 +33,7 @@ function parseMaterial(file) {
         width,
         sizeLabel: `${formatNumber(height)} x ${formatNumber(width)} m`,
         areaLabel: `${formatNumber(area)} m2`,
-        img: encodeURI(`${materialBasePath}/${file}`),
+        img: `${encodeURI(`${materialBasePath}/${file}`)}?v=${assetVersion}`,
         file
     };
 }
