@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock Update | Global Stone</title>
+    <title>Material Ready | Global Stone</title>
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -45,8 +45,8 @@
             <!-- Desktop Nav -->
             <nav class="hidden md:block">
                 <ul class="flex gap-8 text-sm font-medium text-white/70">
-                    <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
-                    <li><a href="materials.html" class="text-white border-b-2 border-gs-blue pb-1">Stock Update</a></li>
+                    <li><a href="index.html" class="hover:text-white transition-colors">Beranda</a></li>
+                    <li><a href="materials.html" class="text-white border-b-2 border-gs-blue pb-1">Material</a></li>
                     <li><a href="showroom.html" class="hover:text-white transition-colors">Showroom Virtual</a></li>
                     <li><a href="portfolio.html" class="hover:text-white transition-colors">Portfolio</a></li>
                 </ul>
@@ -54,8 +54,8 @@
             
             <!-- Mobile Nav -->
             <nav id="mobileNav" class="mobile-menu flex-col absolute top-full left-0 w-full bg-[#0c111d]/95 backdrop-blur-md border-b border-gs-blue/30 shadow-[0_10px_30px_rgba(27,79,138,0.35)] p-6 gap-6 text-center text-lg font-medium md:hidden">
-                <a href="index.html" class="text-white/80 hover:text-white">Home</a>
-                <a href="materials.html" class="text-white border-b border-gs-blue inline-block pb-1">Stock Update</a>
+                <a href="index.html" class="text-white/80 hover:text-white">Beranda</a>
+                <a href="materials.html" class="text-white border-b border-gs-blue inline-block pb-1">Material</a>
                 <a href="showroom.html" class="text-white/80 hover:text-white">Showroom Virtual</a>
                 <a href="portfolio.html" class="text-white/80 hover:text-white">Portfolio</a>
             </nav>
@@ -65,8 +65,9 @@
     <!-- Page Header -->
     <div class="py-12 md:py-16 border-b border-gs-lightgray px-6">
         <div class="max-w-7xl mx-auto">
-            <h1 class="font-serif text-fluid-h2 font-bold mb-2 text-gs-charcoal">Stock Update</h1>
-            <p class="text-gs-gray text-fluid-p max-w-2xl">Ketersediaan material premium kami diperbarui secara berkala. Hubungi kami untuk reservasi blok spesifik (bookmatch).</p>
+            <p class="fine-label text-xs text-gs-gold mb-3">Live material board</p>
+            <h1 class="font-serif text-fluid-h2 font-bold mb-2 text-gs-charcoal">Material siap dipilih</h1>
+            <p class="text-gs-gray text-fluid-p max-w-2xl">Telusuri stok yang bisa langsung dikurasi untuk proyek. Butuh pola bookmatch, tone tertentu, atau volume besar? Tim kami akan bantu cocokkan sampai layak dipresentasikan ke klien.</p>
         </div>
     </div>
 
@@ -76,14 +77,14 @@
         <!-- Filters (Client Side) -->
         <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
             <div class="flex gap-2 w-full md:w-auto overflow-x-auto pb-2 scrollbar-hide">
-                <button class="filter-btn active px-5 py-2 bg-gs-charcoal text-white rounded-full text-sm font-medium whitespace-nowrap" data-filter="all">Semua Material</button>
+                <button class="filter-btn active px-5 py-2 bg-gs-charcoal text-white rounded-full text-sm font-medium whitespace-nowrap" data-filter="all">Semua</button>
                 <button class="filter-btn px-5 py-2 bg-white border border-gs-lightgray text-gs-charcoal hover:border-gs-blue rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-filter="marble">Marble</button>
                 <button class="filter-btn px-5 py-2 bg-white border border-gs-lightgray text-gs-charcoal hover:border-gs-blue rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-filter="granite">Granite</button>
                 <button class="filter-btn px-5 py-2 bg-white border border-gs-lightgray text-gs-charcoal hover:border-gs-blue rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-filter="exotic">Exotic</button>
             </div>
             
             <div class="w-full md:w-64 relative">
-                <input type="text" id="searchInput" placeholder="Cari material..." class="w-full pl-10 pr-4 py-2 bg-white border border-gs-lightgray rounded-full focus:outline-none focus:border-gs-blue text-sm">
+                <input type="text" id="searchInput" placeholder="Cari nama material..." class="w-full pl-10 pr-4 py-2 bg-white border border-gs-lightgray rounded-full focus:outline-none focus:border-gs-blue text-sm">
                 <svg class="w-4 h-4 absolute left-4 top-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
         </div>
@@ -92,7 +93,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="stockGrid">
             
             <!-- Item 1 -->
-            <div class="stock-card group" data-category="marble" data-name="gucci black bookmatch">
+            <div class="stock-card group quiet-card p-4" data-category="marble" data-name="gucci black bookmatch">
                 <div class="relative aspect-[4/3] overflow-hidden rounded-sm bg-gs-lightgray mb-4">
                     <img src="assets/images/materials/GUCCI BLACK BOOKMATCH 3.jpg" alt="Gucci Black" class="w-full h-full object-cover hover-zoom-img">
                     <div class="absolute top-3 right-3 px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-bold text-green-700 rounded-full shadow-sm">
@@ -116,7 +117,7 @@
             </div>
 
             <!-- Item 2 -->
-            <div class="stock-card group" data-category="marble" data-name="lavish gold">
+            <div class="stock-card group quiet-card p-4" data-category="marble" data-name="lavish gold">
                 <div class="relative aspect-[4/3] overflow-hidden rounded-sm bg-gs-lightgray mb-4">
                     <img src="assets/images/materials/LAVISH GOLD.jpeg" alt="Lavish Gold" class="w-full h-full object-cover hover-zoom-img">
                     <div class="absolute top-3 right-3 px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-bold text-orange-600 rounded-full shadow-sm">
@@ -140,7 +141,7 @@
             </div>
 
             <!-- Item 3 -->
-            <div class="stock-card group" data-category="marble" data-name="statuario turkey">
+            <div class="stock-card group quiet-card p-4" data-category="marble" data-name="statuario turkey">
                 <div class="relative aspect-[4/3] overflow-hidden rounded-sm bg-gs-lightgray mb-4">
                     <img src="assets/images/materials/STATUARIO TURKEY 2.jpg" alt="Statuario Turkey" class="w-full h-full object-cover hover-zoom-img">
                     <div class="absolute top-3 right-3 px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-bold text-green-700 rounded-full shadow-sm">
@@ -164,7 +165,7 @@
             </div>
 
             <!-- Item 4 -->
-            <div class="stock-card group" data-category="exotic" data-name="verde amber">
+            <div class="stock-card group quiet-card p-4" data-category="exotic" data-name="verde amber">
                 <div class="relative aspect-[4/3] overflow-hidden rounded-sm bg-gs-lightgray mb-4">
                     <img src="assets/images/materials/VERDE AMBER.jpg" alt="Verde Amber" class="w-full h-full object-cover hover-zoom-img">
                     <div class="absolute top-3 right-3 px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-bold text-red-600 rounded-full shadow-sm">
@@ -188,7 +189,7 @@
             </div>
 
             <!-- Item 5 -->
-            <div class="stock-card group" data-category="granite" data-name="grigio montana">
+            <div class="stock-card group quiet-card p-4" data-category="granite" data-name="grigio montana">
                 <div class="relative aspect-[4/3] overflow-hidden rounded-sm bg-gs-lightgray mb-4">
                     <img src="assets/images/materials/grigio montana basah.jpg" alt="Grigio Montana" class="w-full h-full object-cover hover-zoom-img">
                     <div class="absolute top-3 right-3 px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-bold text-green-700 rounded-full shadow-sm">
@@ -212,7 +213,7 @@
             </div>
 
             <!-- Item 6 -->
-            <div class="stock-card group" data-category="marble" data-name="rosso allcante">
+            <div class="stock-card group quiet-card p-4" data-category="marble" data-name="rosso allcante">
                 <div class="relative aspect-[4/3] overflow-hidden rounded-sm bg-gs-lightgray mb-4">
                     <img src="assets/images/materials/rosso allcante.jpeg" alt="Rosso Allcante" class="w-full h-full object-cover hover-zoom-img">
                     <div class="absolute top-3 right-3 px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-bold text-green-700 rounded-full shadow-sm">
@@ -247,7 +248,7 @@
     <div class="fixed bottom-0 left-0 w-full bg-gs-charcoal text-white z-50 border-t border-gs-blue/50">
         <a href="https://wa.me/6281287875820" target="_blank" class="flex justify-center items-center py-4 px-4 hover:bg-black transition-colors group">
             <svg class="w-5 h-5 mr-3 text-green-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            <span class="font-medium text-sm md:text-base tracking-wide">Cek Ketersediaan & Penawaran Harga: 0812-8787-5820</span>
+            <span class="sticky-cta-text font-medium text-sm md:text-base tracking-wide">Konsultasi stok & harga proyek: 0812-8787-5820</span>
         </a>
     </div>
 

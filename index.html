@@ -45,8 +45,8 @@
             <!-- Desktop Nav -->
             <nav class="hidden md:block">
                 <ul class="flex gap-8 text-sm font-medium text-white/70">
-                    <li><a href="index.html" class="text-white border-b-2 border-gs-blue pb-1">Home</a></li>
-                    <li><a href="materials.html" class="hover:text-white transition-colors">Stock Update</a></li>
+                    <li><a href="index.html" class="text-white border-b-2 border-gs-blue pb-1">Beranda</a></li>
+                    <li><a href="materials.html" class="hover:text-white transition-colors">Material</a></li>
                     <li><a href="showroom.html" class="hover:text-white transition-colors">Showroom Virtual</a></li>
                     <li><a href="portfolio.html" class="hover:text-white transition-colors">Portfolio</a></li>
                 </ul>
@@ -54,8 +54,8 @@
             
             <!-- Mobile Nav (Hidden by default, overlays screen when active) -->
             <nav id="mobileNav" class="mobile-menu flex-col absolute top-full left-0 w-full bg-[#0c111d]/95 backdrop-blur-md border-b border-gs-blue/30 shadow-[0_10px_30px_rgba(27,79,138,0.35)] p-6 gap-6 text-center text-lg font-medium md:hidden hidden">
-                <a href="index.html" class="text-white border-b border-gs-blue inline-block pb-1">Home</a>
-                <a href="materials.html" class="text-white/80 hover:text-white">Stock Update</a>
+                <a href="index.html" class="text-white border-b border-gs-blue inline-block pb-1">Beranda</a>
+                <a href="materials.html" class="text-white/80 hover:text-white">Material</a>
                 <a href="showroom.html" class="text-white/80 hover:text-white">Showroom Virtual</a>
                 <a href="portfolio.html" class="text-white/80 hover:text-white">Portfolio</a>
             </nav>
@@ -73,18 +73,19 @@
 
         <!-- Hero Content -->
         <div class="relative z-10 max-w-4xl mx-auto px-6 text-center fade-up-element opacity-0 translate-y-4 transition-all duration-1000">
+            <p class="fine-label text-xs md:text-sm text-white/75 mb-4">Premium natural stone partner</p>
             <h1 class="font-serif text-fluid-h1 font-bold text-white mb-6 leading-tight drop-shadow-xl pt-12 md:pt-0">
-                Stok Lengkap.<br/><span class="text-white">Proyek Lancar.</span>
+                Pilih slab dengan tenang.<br/><span class="text-white">Bangun proyek tanpa drama.</span>
             </h1>
             <p class="text-fluid-p text-white/95 font-light max-w-2xl mx-auto mb-10 drop-shadow-lg text-lg">
-                Distributor batu alam terpercaya untuk kontraktor & arsitek B2B. Material premium selalu tersedia, memastikan proyek Anda berjalan tanpa hambatan.
+                Global Stone membantu arsitek, kontraktor, dan pemilik proyek menemukan marble, granite, dan exotic stone yang siap dipilih, dicek visualnya, lalu diamankan untuk jadwal instalasi.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="https://wa.me/6281287875820" target="_blank" class="w-full sm:w-auto inline-block bg-gs-blue text-white text-sm font-semibold px-6 py-3 rounded-sm hover:bg-blue-800 transition-colors shadow-lg">
-                    Hubungi via WhatsApp
+                <a href="showroom.html" class="w-full sm:w-auto inline-block bg-white text-gs-charcoal text-sm font-semibold px-6 py-3 rounded-sm hover:bg-gs-offwhite transition-colors shadow-lg">
+                    Masuk ke Showroom Virtual
                 </a>
-                <a href="materials.html" class="w-full sm:w-auto inline-block bg-transparent text-white border border-white text-sm font-semibold px-6 py-3 rounded-sm hover:bg-white hover:text-gs-charcoal transition-colors">
-                    Lihat Stok Terkini
+                <a href="materials.html" class="w-full sm:w-auto inline-block bg-transparent text-white border border-white/80 text-sm font-semibold px-6 py-3 rounded-sm hover:bg-white hover:text-gs-charcoal transition-colors">
+                    Cek Material Ready
                 </a>
             </div>
         </div>
@@ -94,37 +95,38 @@
     <section class="py-16 md:py-24 bg-gs-offwhite">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-12 fade-up-element opacity-0 translate-y-4 transition-all duration-1000 delay-100">
-                <h2 class="font-serif text-fluid-h2 font-bold text-gs-charcoal mb-4">Mengapa Memilih Global Stone?</h2>
+                <p class="fine-label text-xs text-gs-gold mb-3">Cara kerja kami</p>
+                <h2 class="font-serif text-fluid-h2 font-bold text-gs-charcoal mb-4">Lebih rapi dari sekadar jual slab.</h2>
                 <div class="w-16 h-1 bg-gs-gold mx-auto"></div>
             </div>
 
             <!-- Swipeable Container for Mobile -->
             <div class="flex overflow-x-auto gap-6 md:grid md:grid-cols-3 md:gap-12 lg:gap-16 pb-8 snap-x snap-mandatory scrollbar-hide">
                 <!-- UVP 1 -->
-                <div class="text-center group shrink-0 w-[85vw] md:w-auto snap-center fade-up-element opacity-0 translate-y-4 transition-all duration-1000 delay-200">
+                <div class="text-center group quiet-card p-8 shrink-0 w-[85vw] md:w-auto snap-center fade-up-element opacity-0 translate-y-4 transition-all duration-1000 delay-200">
                     <div class="w-16 h-16 mx-auto bg-white border border-gs-lightgray rounded-full flex items-center justify-center mb-6 group-hover:bg-gs-blue group-hover:border-gs-blue transition-colors duration-500">
                         <svg class="w-8 h-8 text-gs-charcoal group-hover:text-white transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                     </div>
-                    <h3 class="font-serif text-fluid-h3 font-bold mb-3 text-gs-charcoal">Ready Stock Terbesar</h3>
-                    <p class="text-gs-gray text-fluid-p leading-relaxed max-w-sm mx-auto">Gudang kami di Jakarta Utara menampung ribuan meter persegi slab siap kirim. Tidak perlu menunggu inden berbulan-bulan.</p>
+                    <h3 class="font-serif text-fluid-h3 font-bold mb-3 text-gs-charcoal">Stok yang bisa dicek</h3>
+                    <p class="text-gs-gray text-fluid-p leading-relaxed max-w-sm mx-auto">Tim kami menyiapkan foto slab, jumlah aktual, dan opsi bookmatch agar keputusan material tidak bergantung pada tebakan.</p>
                 </div>
                 
                 <!-- UVP 2 -->
-                <div class="text-center group shrink-0 w-[85vw] md:w-auto snap-center fade-up-element opacity-0 translate-y-4 transition-all duration-1000 delay-300">
+                <div class="text-center group quiet-card p-8 shrink-0 w-[85vw] md:w-auto snap-center fade-up-element opacity-0 translate-y-4 transition-all duration-1000 delay-300">
                     <div class="w-16 h-16 mx-auto bg-white border border-gs-lightgray rounded-full flex items-center justify-center mb-6 group-hover:bg-gs-blue group-hover:border-gs-blue transition-colors duration-500">
                         <svg class="w-8 h-8 text-gs-charcoal group-hover:text-white transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                     </div>
-                    <h3 class="font-serif text-fluid-h3 font-bold mb-3 text-gs-charcoal">Transparansi Harga</h3>
-                    <p class="text-gs-gray text-fluid-p leading-relaxed max-w-sm mx-auto">Sistem harga flat B2B. Penawaran resmi, akurat, tanpa biaya tersembunyi. Memudahkan perhitungan RAB proyek Anda.</p>
+                    <h3 class="font-serif text-fluid-h3 font-bold mb-3 text-gs-charcoal">Penawaran jelas</h3>
+                    <p class="text-gs-gray text-fluid-p leading-relaxed max-w-sm mx-auto">Harga, volume, dan ketersediaan disusun rapi untuk membantu RAB, approval klien, dan pengadaan proyek bergerak lebih cepat.</p>
                 </div>
 
                 <!-- UVP 3 -->
-                <div class="text-center group shrink-0 w-[85vw] md:w-auto snap-center fade-up-element opacity-0 translate-y-4 transition-all duration-1000 delay-400">
+                <div class="text-center group quiet-card p-8 shrink-0 w-[85vw] md:w-auto snap-center fade-up-element opacity-0 translate-y-4 transition-all duration-1000 delay-400">
                     <div class="w-16 h-16 mx-auto bg-white border border-gs-lightgray rounded-full flex items-center justify-center mb-6 group-hover:bg-gs-blue group-hover:border-gs-blue transition-colors duration-500">
                         <svg class="w-8 h-8 text-gs-charcoal group-hover:text-white transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
                     </div>
-                    <h3 class="font-serif text-fluid-h3 font-bold mb-3 text-gs-charcoal">Kualitas Konsisten</h3>
-                    <p class="text-gs-gray text-fluid-p leading-relaxed max-w-sm mx-auto">Seleksi ketat sejak dari quarry. Kami menyediakan foto slab beresolusi tinggi sebelum pengiriman untuk kepastian visual.</p>
+                    <h3 class="font-serif text-fluid-h3 font-bold mb-3 text-gs-charcoal">Kurasi visual</h3>
+                    <p class="text-gs-gray text-fluid-p leading-relaxed max-w-sm mx-auto">Setiap pilihan dibahas dari karakter urat, tone, finishing, dan konteks ruang, bukan hanya dari nama material.</p>
                 </div>
             </div>
         </div>
@@ -134,7 +136,7 @@
     <div class="fixed bottom-0 left-0 w-full bg-gs-charcoal text-white z-50 border-t border-gs-blue/50">
         <a href="https://wa.me/6281287875820" target="_blank" class="flex justify-center items-center py-4 px-4 hover:bg-black transition-colors group">
             <svg class="w-5 h-5 mr-3 text-green-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            <span class="font-medium text-sm md:text-base tracking-wide">Cek Ketersediaan & Penawaran Harga: 0812-8787-5820</span>
+            <span class="sticky-cta-text font-medium text-sm md:text-base tracking-wide">Konsultasi stok & harga proyek: 0812-8787-5820</span>
         </a>
     </div>
 

@@ -28,15 +28,12 @@
     </script>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* 3D Canvas Container Styles */
         #canvas-container {
             width: 100%;
-            height: 60vh;
-            min-height: 400px;
+            height: min(72vh, 720px);
+            min-height: 520px;
             position: relative;
             overflow: hidden;
-            border-radius: 0.5rem;
-            border: 1px solid #E5E5E5;
         }
         
         #canvas-container canvas {
@@ -49,11 +46,11 @@
         /* 3D Tooltip HUD */
         #data-tooltip {
             position: fixed;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.94);
             backdrop-filter: blur(8px);
-            border: 1px solid #E5E5E5;
+            border: 1px solid rgba(26, 26, 26, 0.08);
             padding: 1rem;
-            border-radius: 4px;
+            border-radius: 8px;
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.2s ease;
@@ -61,9 +58,25 @@
             z-index: 100;
             color: #1a1a1a;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: min(280px, calc(100vw - 32px));
         }
         #data-tooltip.visible {
             opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            #canvas-container {
+                height: 64vh;
+                min-height: 430px;
+            }
+
+            #data-tooltip {
+                left: 16px !important;
+                right: 16px;
+                top: auto !important;
+                bottom: 98px;
+                position: fixed;
+            }
         }
     </style>
 </head>
@@ -84,8 +97,8 @@
             <!-- Desktop Nav -->
             <nav class="hidden md:block">
                 <ul class="flex gap-8 text-sm font-medium text-white/70">
-                    <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
-                    <li><a href="materials.html" class="hover:text-white transition-colors">Stock Update</a></li>
+                    <li><a href="index.html" class="hover:text-white transition-colors">Beranda</a></li>
+                    <li><a href="materials.html" class="hover:text-white transition-colors">Material</a></li>
                     <li><a href="showroom.html" class="text-white border-b-2 border-gs-blue pb-1">Showroom Virtual</a></li>
                     <li><a href="portfolio.html" class="hover:text-white transition-colors">Portfolio</a></li>
                 </ul>
@@ -93,28 +106,61 @@
             
             <!-- Mobile Nav -->
             <nav id="mobileNav" class="mobile-menu flex-col absolute top-full left-0 w-full bg-[#0c111d]/95 backdrop-blur-md border-b border-gs-blue/30 shadow-[0_10px_30px_rgba(27,79,138,0.35)] p-6 gap-6 text-center text-lg font-medium md:hidden">
-                <a href="index.html" class="text-white/80 hover:text-white">Home</a>
-                <a href="materials.html" class="text-white/80 hover:text-white">Stock Update</a>
+                <a href="index.html" class="text-white/80 hover:text-white">Beranda</a>
+                <a href="materials.html" class="text-white/80 hover:text-white">Material</a>
                 <a href="showroom.html" class="text-white border-b border-gs-blue inline-block pb-1">Showroom Virtual</a>
                 <a href="portfolio.html" class="text-white/80 hover:text-white">Portfolio</a>
             </nav>
         </div>
     </header>
 
-    <!-- Page Header (Shortened) -->
-    <div class="py-8 md:py-12 text-center px-4">
-        <h1 class="font-serif text-fluid-h2 font-bold mb-2 text-gs-charcoal">Showroom Virtual</h1>
-        <p class="text-gs-gray text-fluid-p max-w-2xl mx-auto">Visualisasikan material premium pada ruangan berskala nyata secara instan.</p>
+    <!-- Page Header -->
+    <div class="py-10 md:py-16 text-center px-4">
+        <p class="fine-label text-xs text-gs-gold mb-3">Immersive showroom</p>
+        <h1 class="font-serif text-fluid-h2 font-bold mb-3 text-gs-charcoal">Masuk ke showroom, bukan cuma lihat katalog.</h1>
+        <p class="text-gs-gray text-fluid-p max-w-3xl mx-auto">Jelajahi layout showroom Global Stone secara utuh: area display slab, wall mockup, meja konsultasi, dan zona inspeksi material. Putar kamera, pilih view, lalu cek material yang sedang ditampilkan.</p>
     </div>
 
     <!-- Layer 1: Interactive 3D Showroom (Hero Feature) -->
-    <section class="max-w-7xl mx-auto px-4 md:px-6 mb-24">
-        <div class="mb-6">
-            <p class="text-gs-gray text-sm mb-2"><span class="inline-block w-2 h-2 rounded-full bg-gs-blue mr-2"></span>Interactive 3D View</p>
-            <p class="text-gs-charcoal font-medium">Geser untuk memutar kamera. Arahkan kursor ke batu untuk melihat spesifikasi detail.</p>
+    <section class="max-w-7xl mx-auto px-4 md:px-6 mb-20">
+        <div class="grid grid-cols-1 lg:grid-cols-[0.72fr_1.28fr] gap-6 items-stretch mb-6">
+            <div class="editorial-panel p-6 md:p-8">
+                <p class="fine-label text-xs text-gs-gold mb-4">Interactive 3D View</p>
+                <h2 class="font-serif text-fluid-h3 font-bold mb-4 text-gs-charcoal">Tour cepat ruang showroom</h2>
+                <p class="text-gs-gray leading-relaxed mb-6">Geser untuk memutar kamera, cubit atau scroll untuk zoom. Di desktop, arahkan kursor ke slab dan area display. Di mobile, tap objek untuk membuka detailnya.</p>
+                <div class="grid grid-cols-2 gap-3 text-sm">
+                    <div class="border-t border-gs-lightgray pt-3">
+                        <span class="block text-gs-gray">Zona</span>
+                        <strong>Display, mockup, konsultasi</strong>
+                    </div>
+                    <div class="border-t border-gs-lightgray pt-3">
+                        <span class="block text-gs-gray">Interaksi</span>
+                        <strong>Rotate, zoom, tap</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <button class="showroom-control active px-4 py-4 text-left rounded-sm" data-view="overview">
+                    <span class="block text-xs uppercase tracking-widest opacity-70">View</span>
+                    <strong>Showroom penuh</strong>
+                </button>
+                <button class="showroom-control px-4 py-4 text-left rounded-sm" data-view="slabs">
+                    <span class="block text-xs uppercase tracking-widest opacity-70">View</span>
+                    <strong>Rak slab</strong>
+                </button>
+                <button class="showroom-control px-4 py-4 text-left rounded-sm" data-view="wall">
+                    <span class="block text-xs uppercase tracking-widest opacity-70">View</span>
+                    <strong>Wall mockup</strong>
+                </button>
+                <button class="showroom-control px-4 py-4 text-left rounded-sm" data-view="consult">
+                    <span class="block text-xs uppercase tracking-widest opacity-70">View</span>
+                    <strong>Area konsultasi</strong>
+                </button>
+            </div>
         </div>
-        
-        <div class="w-full relative shadow-lg">
+
+        <div class="w-full relative showroom-shell overflow-hidden rounded-sm">
             <div id="canvas-container"></div>
             
             <!-- Tooltip/HUD for 3D Elements -->
@@ -135,12 +181,34 @@
         </div>
     </section>
 
+    <!-- Tour Zones -->
+    <section class="max-w-7xl mx-auto px-6 mb-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="quiet-card p-6">
+                <span class="fine-label text-[11px] text-gs-gold">01</span>
+                <h3 class="font-serif text-2xl font-bold mt-3 mb-3">Slab gallery</h3>
+                <p class="text-gs-gray leading-relaxed">Rak display dibuat agar urat, tone, dan skala slab bisa dibandingkan dalam satu pandangan.</p>
+            </div>
+            <div class="quiet-card p-6">
+                <span class="fine-label text-[11px] text-gs-gold">02</span>
+                <h3 class="font-serif text-2xl font-bold mt-3 mb-3">Wall mockup</h3>
+                <p class="text-gs-gray leading-relaxed">Material ditampilkan sebagai bidang dinding dan counter, jadi lebih mudah dibayangkan untuk lobby atau living area.</p>
+            </div>
+            <div class="quiet-card p-6">
+                <span class="fine-label text-[11px] text-gs-gold">03</span>
+                <h3 class="font-serif text-2xl font-bold mt-3 mb-3">Consultation desk</h3>
+                <p class="text-gs-gray leading-relaxed">Area diskusi untuk finalisasi tone, finishing, volume, dan jadwal pengiriman proyek.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Layer 2: High-Res Loupe Zoom -->
-    <section class="py-16 border-t border-gs-lightgray">
+    <section class="py-16 border-t border-gs-lightgray bg-white/45">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-10 text-center max-w-2xl mx-auto">
-                <h2 class="font-serif text-fluid-h3 font-bold mb-4 text-gs-charcoal">Inspeksi Detail (Loupe Zoom)</h2>
-                <p class="text-gs-gray text-fluid-p">Arahkan kursor pada gambar slab di bawah untuk melihat kerapatan pori dan detail urat batu resolusi tinggi secara *close-up*.</p>
+                <p class="fine-label text-xs text-gs-gold mb-3">Detail station</p>
+                <h2 class="font-serif text-fluid-h3 font-bold mb-4 text-gs-charcoal">Dekati uratnya sebelum memilih.</h2>
+                <p class="text-gs-gray text-fluid-p">Gunakan loupe untuk membaca arah urat, tekstur, dan karakter permukaan dari material yang sering dipakai untuk bidang statement.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -169,8 +237,9 @@
     <!-- Layer 3: In-Situ Editorial Gallery -->
     <section class="py-16 max-w-7xl mx-auto px-6 border-t border-gs-lightgray">
         <div class="mb-10 text-center">
-            <h2 class="font-serif text-fluid-h3 font-bold mb-2 text-gs-charcoal">In-Situ Gallery</h2>
-            <p class="text-gs-gray text-fluid-p">Aplikasi nyata material Global Stone pada interior mewah berskala besar.</p>
+            <p class="fine-label text-xs text-gs-gold mb-3">Room references</p>
+            <h2 class="font-serif text-fluid-h3 font-bold mb-2 text-gs-charcoal">Lihat material ketika sudah hidup di ruang.</h2>
+            <p class="text-gs-gray text-fluid-p">Referensi aplikasi untuk membantu membaca proporsi slab, arah urat, dan suasana akhir ruangan.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
@@ -193,7 +262,7 @@
     <div class="fixed bottom-0 left-0 w-full bg-gs-charcoal text-white z-50 border-t border-gs-blue/30">
         <a href="https://wa.me/6281287875820" target="_blank" class="flex justify-center items-center py-4 px-4 hover:bg-black transition-colors group">
             <svg class="w-5 h-5 mr-3 text-green-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            <span class="font-medium text-sm md:text-base tracking-wide">Cek Ketersediaan & Penawaran Harga: 0812-8787-5820</span>
+            <span class="sticky-cta-text font-medium text-sm md:text-base tracking-wide">Konsultasi stok & harga proyek: 0812-8787-5820</span>
         </a>
     </div>
 
