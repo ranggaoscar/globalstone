@@ -1,42 +1,48 @@
-const stoneData = [
-    {
-        name: "Gucci Black",
-        category: "Bookmatch Marble",
-        m2: "976",
-        slab: "183",
-        img: "assets/images/materials/GUCCI BLACK BOOKMATCH 3.jpg",
-        note: "Statement wall, lobby, lift foyer"
-    },
-    {
-        name: "Lavish Gold",
-        category: "Warm Marble",
-        m2: "145",
-        slab: "32",
-        img: "assets/images/materials/LAVISH GOLD.jpeg",
-        note: "Living area, bathroom, hospitality counter"
-    },
-    {
-        name: "Statuario Turkey",
-        category: "White Marble",
-        m2: "450",
-        slab: "85",
-        img: "assets/images/materials/STATUARIO TURKEY 2.jpg",
-        note: "Clean modern walls and floors"
-    },
-    {
-        name: "Verde Amber",
-        category: "Exotic Stone",
-        m2: "Pre-order",
-        slab: "Curated",
-        img: "assets/images/materials/VERDE AMBER.jpg",
-        note: "Feature bar, powder room, private lobby"
-    }
+const showroomMaterialFiles = [
+    "Carara Super Magrade 1,86 x 1,10.png",
+    "Compress Statuario Magrade 2,70 x 1,80.png",
+    "Golden Phoenix Magrade 2,95 x 1,82.png",
+    "Grey Levanto Magrade 2,92x 1,85.png",
+    "Monaco grey Magrade 2,80 x 1,88.png",
+    "Moon Grey Magrade 3,07 x 1,90.png",
+    "Onix Lavared Magrade 2,84 x 1,20.png",
+    "Royal Amber Magrade 3,03 x 1,78.png",
+    "Statuarieto Magrade 2,91 x 1,58.png",
+    "Statuario Classico Magrade 3,10 x 1,58.png",
+    "Statuario Turkey Magrade 2,69 x 1,35.png",
+    "White Patagonia Magrade 3,20 x 1,95.png"
 ];
 
+const materialBasePath = "assets/images/Material Showroom Virtual";
+const formatNumber = (value) => value.toFixed(2).replace(".", ",");
+const toTitleCase = (text) => text.replace(/\w\S*/g, (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase());
+
+function parseMaterial(file) {
+    const baseName = file.replace(/\.[^.]+$/, "");
+    const match = baseName.match(/^(.*?)\s+Magrade\s+([\d,]+)\s*x\s*([\d,]+)$/i);
+    const rawName = match ? match[1].trim() : baseName;
+    const height = match ? Number(match[2].replace(",", ".")) : 3;
+    const width = match ? Number(match[3].replace(",", ".")) : 1.6;
+    const area = height * width;
+
+    return {
+        name: toTitleCase(rawName),
+        category: "Magrade Slab",
+        height,
+        width,
+        sizeLabel: `${formatNumber(height)} x ${formatNumber(width)} m`,
+        areaLabel: `${formatNumber(area)} m2`,
+        img: encodeURI(`${materialBasePath}/${file}`),
+        file
+    };
+}
+
+const stoneData = showroomMaterialFiles.map(parseMaterial);
+
 const roomHotspots = [
-    { name: "Wall Mockup", category: "Showroom Zone", m2: "Full-scale", slab: "3 bays", note: "Bidang dinding untuk membaca bookmatch dan proporsi urat.", position: [7.3, 2.8, -5.6] },
-    { name: "Consultation Desk", category: "Project Desk", m2: "RAB", slab: "Sampling", note: "Area diskusi tone, finishing, volume, dan jadwal pengiriman.", position: [4.3, 1.8, 3.2] },
-    { name: "Sample Island", category: "Detail Station", m2: "Close-up", slab: "Swatches", note: "Tempat membandingkan potongan material dan finishing.", position: [-1.2, 1.25, 4.2] }
+    { name: "Wall Mockup", category: "Showroom Zone", sizeLabel: "Full-scale display", areaLabel: "4 panels", note: "Bidang dinding untuk membaca bookmatch dan proporsi urat.", position: [7.3, 2.8, -5.6] },
+    { name: "Consultation Desk", category: "Project Desk", sizeLabel: "Material review", areaLabel: "12 samples", note: "Area diskusi tone, finishing, volume, dan jadwal pengiriman.", position: [4.3, 1.8, 3.2] },
+    { name: "Sample Island", category: "Detail Station", sizeLabel: "Close-up check", areaLabel: "All materials", note: "Tempat membandingkan potongan material dan finishing.", position: [-1.2, 1.25, 4.2] }
 ];
 
 const container = document.getElementById("canvas-container");
@@ -68,7 +74,7 @@ const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.06;
 controls.minDistance = 7;
-controls.maxDistance = 32;
+controls.maxDistance = 34;
 controls.maxPolarAngle = Math.PI / 2 - 0.08;
 controls.target.set(0, 2.2, 0);
 controls.addEventListener("start", () => {
@@ -82,9 +88,9 @@ const raycaster = new THREE.Raycaster();
 
 const viewTargets = {
     overview: { position: new THREE.Vector3(11, 8, 16), target: new THREE.Vector3(0, 2.2, 0) },
-    slabs: { position: new THREE.Vector3(-10, 4.8, 8), target: new THREE.Vector3(-5.2, 2.8, -3) },
+    slabs: { position: new THREE.Vector3(-12, 5.2, 9), target: new THREE.Vector3(-8.4, 2.8, -5.2) },
     wall: { position: new THREE.Vector3(9, 4.5, 7), target: new THREE.Vector3(6.7, 2.7, -4.4) },
-    consult: { position: new THREE.Vector3(4.8, 4.4, 10), target: new THREE.Vector3(2.7, 1.8, 2.6) }
+    consult: { position: new THREE.Vector3(4.8, 4.4, 10), target: new THREE.Vector3(1.5, 1.7, 3.9) }
 };
 let desiredView = viewTargets.overview;
 
@@ -116,6 +122,16 @@ function addBox(name, size, position, material, options = {}) {
     mesh.receiveShadow = options.receiveShadow !== false;
     scene.add(mesh);
     return mesh;
+}
+
+function materialPayload(data, label) {
+    return {
+        name: label || data.name,
+        category: data.category,
+        m2: data.sizeLabel,
+        slab: data.areaLabel,
+        kind: "stone"
+    };
 }
 
 function addRoom() {
@@ -166,7 +182,8 @@ function addLighting() {
 
 function addSlabGallery() {
     const rackMat = makeMat(0x0f1116, 0.5, 0.28);
-    addBox("slab rack base", [10.8, 0.35, 0.8], [-6.8, 0.25, -7.35], rackMat);
+    addBox("back slab rack base", [24, 0.35, 0.8], [0, 0.25, -7.35], rackMat);
+    addBox("left slab rack base", [0.8, 0.35, 14.5], [-13.35, 0.25, -1.7], rackMat);
 
     stoneData.forEach((data, index) => {
         const texture = loadStoneTexture(data.img);
@@ -175,16 +192,31 @@ function addSlabGallery() {
             roughness: 0.25,
             metalness: 0.06
         });
-        const slab = addBox(data.name, [2.35, 4.7, 0.18], [-11.2 + index * 2.85, 2.65, -7.05], mat, {
-            rotation: [0, -0.08 + index * 0.045, 0]
-        });
-        slab.userData = { ...data, kind: "stone" };
-        interactiveObjects.push(slab);
+        const visualHeight = 3.9;
+        const visualWidth = Math.max(1.45, Math.min(2.8, visualHeight * (data.width / data.height)));
 
-        addBox(`${data.name} brass edge`, [2.5, 4.86, 0.06], [-11.2 + index * 2.85, 2.65, -7.18], makeMat(0xb89b5e, 0.32, 0.42), {
-            rotation: [0, -0.08 + index * 0.045, 0],
-            castShadow: false
-        });
+        let slab;
+        if (index < 6) {
+            const x = -10.8 + index * 4.32;
+            slab = addBox(data.name, [visualWidth, visualHeight, 0.16], [x, 2.42, -7.05], mat, {
+                rotation: [0, -0.06 + index * 0.02, 0]
+            });
+            addBox(`${data.name} brass frame`, [visualWidth + 0.18, visualHeight + 0.18, 0.04], [x, 2.42, -7.2], makeMat(0xb89b5e, 0.32, 0.42), {
+                rotation: [0, -0.06 + index * 0.02, 0],
+                castShadow: false
+            });
+        } else {
+            const z = -7.1 + (index - 6) * 2.65;
+            slab = addBox(data.name, [0.16, visualHeight, visualWidth], [-13.05, 2.42, z], mat, {
+                rotation: [0, 0.04, 0]
+            });
+            addBox(`${data.name} side brass frame`, [0.04, visualHeight + 0.18, visualWidth + 0.18], [-13.2, 2.42, z], makeMat(0xb89b5e, 0.32, 0.42), {
+                castShadow: false
+            });
+        }
+
+        slab.userData = materialPayload(data);
+        interactiveObjects.push(slab);
     });
 }
 
@@ -192,35 +224,38 @@ function addWallMockup() {
     const wallBase = makeMat(0x0e1015, 0.42, 0.12);
     addBox("mockup plinth", [0.5, 0.45, 11], [13.62, 0.28, -2.8], wallBase);
 
-    stoneData.slice(0, 3).forEach((data, index) => {
+    stoneData.slice(2, 6).forEach((data, index) => {
         const texture = loadStoneTexture(data.img);
         const mat = new THREE.MeshStandardMaterial({ map: texture, roughness: 0.24, metalness: 0.04 });
-        const panel = addBox(`${data.name} wall mockup`, [0.22, 4.25, 2.8], [13.45, 2.85, -6 + index * 3.25], mat);
-        panel.userData = { ...data, name: `${data.name} Mockup`, category: "Wall Application", kind: "stone" };
+        const panel = addBox(`${data.name} wall mockup`, [0.22, 3.75, 2.45], [13.45, 2.65, -6.5 + index * 2.65], mat);
+        panel.userData = materialPayload(data, `${data.name} Mockup`);
         interactiveObjects.push(panel);
     });
 
-    const counterTexture = loadStoneTexture(stoneData[1].img);
+    const counterData = stoneData[7];
+    const counterTexture = loadStoneTexture(counterData.img);
     const counterMat = new THREE.MeshStandardMaterial({ map: counterTexture, roughness: 0.22, metalness: 0.04 });
-    const counter = addBox("Lavish Gold reception counter", [4.4, 1.05, 1.55], [6.1, 0.7, 3.25], counterMat);
-    counter.userData = { ...stoneData[1], name: "Reception Counter Mockup", category: "Counter Application", kind: "stone" };
+    const counter = addBox("Royal Amber reception counter", [4.4, 1.05, 1.55], [6.1, 0.7, 3.25], counterMat);
+    counter.userData = materialPayload(counterData, "Royal Amber Reception Counter");
     interactiveObjects.push(counter);
 }
 
 function addConsultationArea() {
     const tableTop = makeMat(0x161820, 0.35, 0.2);
     const legMat = makeMat(0xb89b5e, 0.26, 0.42);
-    addBox("consultation table", [4.8, 0.22, 2.4], [-0.8, 1.05, 4.2], tableTop);
-    addBox("left table leg", [0.16, 1.8, 2.1], [-2.85, 0.35, 4.2], legMat);
-    addBox("right table leg", [0.16, 1.8, 2.1], [1.25, 0.35, 4.2], legMat);
+    addBox("consultation table", [5.4, 0.22, 2.7], [-0.8, 1.05, 4.2], tableTop);
+    addBox("left table leg", [0.16, 1.8, 2.35], [-3.2, 0.35, 4.2], legMat);
+    addBox("right table leg", [0.16, 1.8, 2.35], [1.6, 0.35, 4.2], legMat);
 
     stoneData.forEach((data, index) => {
         const texture = loadStoneTexture(data.img);
         const mat = new THREE.MeshStandardMaterial({ map: texture, roughness: 0.32, metalness: 0.02 });
-        const sample = addBox(`${data.name} sample`, [0.95, 0.08, 0.72], [-2.45 + index * 1.1, 1.22, 4.2], mat, {
-            rotation: [0, index % 2 ? 0.16 : -0.1, 0]
+        const col = index % 6;
+        const row = Math.floor(index / 6);
+        const sample = addBox(`${data.name} sample`, [0.74, 0.07, 0.54], [-3.15 + col * 0.94, 1.22, 3.72 + row * 0.86], mat, {
+            rotation: [0, index % 2 ? 0.15 : -0.1, 0]
         });
-        sample.userData = { ...data, name: `${data.name} Sample`, category: "Sample on Desk", kind: "stone" };
+        sample.userData = materialPayload(data, `${data.name} Sample`);
         interactiveObjects.push(sample);
     });
 
@@ -244,7 +279,7 @@ function addHotspots() {
         const marker = new THREE.Mesh(new THREE.SphereGeometry(0.18, 32, 16), hotspotMat.clone());
         marker.position.set(item.position[0], item.position[1], item.position[2]);
         marker.castShadow = true;
-        marker.userData = { ...item, kind: "hotspot" };
+        marker.userData = { ...item, m2: item.sizeLabel, slab: item.areaLabel, kind: "hotspot" };
         scene.add(marker);
         interactiveObjects.push(marker);
     });
