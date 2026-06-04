@@ -145,7 +145,7 @@
         </article>
 
         <!-- Project 3 -->
-        <article class="max-w-7xl mx-auto px-6 mb-12">
+        <article class="max-w-7xl mx-auto px-6 mb-24 lg:mb-32">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
                 <!-- Image Section -->
                 <div class="lg:col-span-8 group overflow-hidden">
@@ -178,6 +178,80 @@
                 </div>
             </div>
         </article>
+
+        <!-- Project 4 (Reversed Layout) -->
+        <article class="max-w-7xl mx-auto px-6 mb-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+                <!-- Content Section (First on Desktop) -->
+                <div class="lg:col-span-4 flex flex-col justify-center order-2 lg:order-1 quiet-card p-6 md:p-8">
+                    <div class="mb-4">
+                        <span class="text-xs font-bold tracking-widest text-gs-blue uppercase">F&B / Commercial</span>
+                    </div>
+                    <h2 class="font-serif text-fluid-h2 font-bold mb-6 text-gs-charcoal">Enkaku Japanese Restaurant</h2>
+                    
+                    <div class="space-y-4 mb-8 text-sm md:text-base border-t border-b border-gs-lightgray py-6">
+                        <div class="flex justify-between">
+                            <span class="text-gs-gray">Material Utama</span>
+                            <span class="font-bold text-gs-charcoal text-right ml-4">Travertine Yellow & Honey Onyx</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gs-gray">Skala Proyek</span>
+                            <span class="font-bold text-gs-charcoal">350 m²</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gs-gray">Aplikasi</span>
+                            <span class="font-bold text-gs-charcoal text-right ml-4">Sushi Bar Counter & Feature Wall</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gs-gray leading-relaxed text-fluid-p">Menghadirkan kehangatan autentik khas Jepang melalui kurasi batu alam bernuansa hangat. Desain mengombinasikan Yellow Travertine bertekstur alami pada pelapis dinding dengan Honey Onyx semi-transparan ber-backlight pada meja bar sushi utama untuk menciptakan suasana santap malam yang intim, mewah, dan menenangkan.</p>
+                </div>
+
+                <!-- Image Section with Interactive Gallery Slider -->
+                <div class="lg:col-span-8 order-1 lg:order-2">
+                    <div class="relative group overflow-hidden rounded-sm bg-gs-lightgray aspect-video md:aspect-[16/10] shadow-md border border-gs-lightgray/50">
+                        <!-- Main Slider Image -->
+                        <img id="enkakuMainImg" src="assets/images/portfolio/Enkaku resto.jpeg" alt="Enkaku Japanese Restaurant - Foto 1" class="w-full h-full object-cover transition-opacity duration-300 hover-zoom-img">
+                        
+                        <!-- Navigation Arrows -->
+                        <button onclick="prevEnkakuSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-white text-gs-charcoal hover:text-gs-gold rounded-full flex items-center justify-center shadow-lg border border-gs-lightgray/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" aria-label="Previous image">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button onclick="nextEnkakuSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-white text-gs-charcoal hover:text-gs-gold rounded-full flex items-center justify-center shadow-lg border border-gs-lightgray/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" aria-label="Next image">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        
+                        <!-- Page Number Counter Badge -->
+                        <div class="absolute bottom-4 right-4 px-3 py-1 bg-black/70 backdrop-blur-sm rounded-full text-white text-xs font-semibold z-10 tracking-wide">
+                            <span id="enkakuSlideIndex">1</span> / 5
+                        </div>
+                    </div>
+                    
+                    <!-- Thumbnails Row -->
+                    <div class="grid grid-cols-5 gap-3 mt-4">
+                        <button onclick="setEnkakuSlide(0)" class="enkaku-thumb relative aspect-video overflow-hidden rounded-sm bg-gs-lightgray border-2 border-gs-gold shadow-sm transition-all duration-200">
+                            <img src="assets/images/portfolio/Enkaku resto.jpeg" alt="Thumbnail 1" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="setEnkakuSlide(1)" class="enkaku-thumb relative aspect-video overflow-hidden rounded-sm bg-gs-lightgray border-2 border-transparent hover:border-gs-gold/50 shadow-sm transition-all duration-200">
+                            <img src="assets/images/portfolio/Enkaku resto (2).jpeg" alt="Thumbnail 2" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="setEnkakuSlide(2)" class="enkaku-thumb relative aspect-video overflow-hidden rounded-sm bg-gs-lightgray border-2 border-transparent hover:border-gs-gold/50 shadow-sm transition-all duration-200">
+                            <img src="assets/images/portfolio/Enkaku resto (3).jpeg" alt="Thumbnail 3" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="setEnkakuSlide(3)" class="enkaku-thumb relative aspect-video overflow-hidden rounded-sm bg-gs-lightgray border-2 border-transparent hover:border-gs-gold/50 shadow-sm transition-all duration-200">
+                            <img src="assets/images/portfolio/Enkaku resto (4).jpeg" alt="Thumbnail 4" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="setEnkakuSlide(4)" class="enkaku-thumb relative aspect-video overflow-hidden rounded-sm bg-gs-lightgray border-2 border-transparent hover:border-gs-gold/50 shadow-sm transition-all duration-200">
+                            <img src="assets/images/portfolio/Enkaku resto (5).jpeg" alt="Thumbnail 5" class="w-full h-full object-cover">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </article>
     </section>
 
     <!-- Sticky Floating CTA -->
@@ -196,6 +270,61 @@
         btn.addEventListener('click', () => {
             nav.classList.toggle('open');
         });
+
+        // Enkaku Resto Slider Logic
+        const enkakuImages = [
+            "assets/images/portfolio/Enkaku resto.jpeg",
+            "assets/images/portfolio/Enkaku resto (2).jpeg",
+            "assets/images/portfolio/Enkaku resto (3).jpeg",
+            "assets/images/portfolio/Enkaku resto (4).jpeg",
+            "assets/images/portfolio/Enkaku resto (5).jpeg"
+        ];
+        let currentEnkakuIndex = 0;
+
+        const mainImg = document.getElementById('enkakuMainImg');
+        const counterIndex = document.getElementById('enkakuSlideIndex');
+        const thumbs = document.querySelectorAll('.enkaku-thumb');
+
+        function updateEnkakuSlide(index) {
+            // Apply fade-out effect
+            mainImg.classList.add('opacity-0');
+            
+            setTimeout(() => {
+                currentEnkakuIndex = index;
+                mainImg.src = enkakuImages[currentEnkakuIndex];
+                mainImg.alt = `Enkaku Japanese Restaurant - Foto ${currentEnkakuIndex + 1}`;
+                counterIndex.textContent = currentEnkakuIndex + 1;
+
+                // Update thumbnails active state
+                thumbs.forEach((thumb, i) => {
+                    if (i === currentEnkakuIndex) {
+                        thumb.classList.add('border-gs-gold');
+                        thumb.classList.remove('border-transparent');
+                    } else {
+                        thumb.classList.remove('border-gs-gold');
+                        thumb.classList.add('border-transparent');
+                    }
+                });
+
+                // Fade-in main image
+                mainImg.classList.remove('opacity-0');
+            }, 150); // duration matching transition duration
+        }
+
+        function nextEnkakuSlide() {
+            let nextIndex = (currentEnkakuIndex + 1) % enkakuImages.length;
+            updateEnkakuSlide(nextIndex);
+        }
+
+        function prevEnkakuSlide() {
+            let prevIndex = (currentEnkakuIndex - 1 + enkakuImages.length) % enkakuImages.length;
+            updateEnkakuSlide(prevIndex);
+        }
+
+        function setEnkakuSlide(index) {
+            if (index === currentEnkakuIndex) return;
+            updateEnkakuSlide(index);
+        }
     </script>
 </body>
 </html>
