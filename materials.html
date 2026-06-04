@@ -106,6 +106,74 @@
         </a>
     </div>
 
+    <!-- Material Detail Modal (Popup) -->
+    <div id="materialModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 md:p-6 transition-all duration-300">
+        <!-- Backdrop Blur Overlay -->
+        <div id="modalBackdrop" class="absolute inset-0 bg-black/70 backdrop-blur-md opacity-0 transition-opacity duration-300"></div>
+        
+        <!-- Modal Content Box -->
+        <div id="modalBox" class="relative bg-white rounded-xl shadow-2xl overflow-hidden max-w-4xl w-full max-h-[90vh] md:max-h-[85vh] flex flex-col md:flex-row transform scale-95 opacity-0 transition-all duration-300 z-10 border border-gs-blue/15">
+            <!-- Close Button -->
+            <button id="closeModalBtn" class="absolute top-4 right-4 z-20 text-gs-charcoal hover:text-gs-gold bg-white/80 hover:bg-white p-2 rounded-full shadow-md transition-all duration-200" aria-label="Close modal">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+
+            <!-- Left: Image Container -->
+            <div class="w-full md:w-1/2 bg-gs-lightgray relative aspect-[4/3] md:aspect-auto md:h-full min-h-[250px] md:min-h-[450px]">
+                <img id="modalImg" src="" alt="" class="w-full h-full object-cover">
+                <!-- Status Badge -->
+                <div id="modalStatusBadge" class="absolute top-4 left-4 px-4 py-1.5 bg-white/95 backdrop-blur-sm text-xs font-bold rounded-full shadow-md">
+                    Ready
+                </div>
+            </div>
+
+            <!-- Right: Details, Description & WhatsApp Button -->
+            <div class="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-auto max-h-[45vh] md:max-h-full">
+                <div>
+                    <!-- Category & Breadcrumb -->
+                    <div id="modalCategory" class="text-xs font-bold tracking-widest text-gs-gold uppercase mb-1">MARBLE</div>
+                    <!-- Stone Name -->
+                    <h2 id="modalName" class="font-serif text-3xl md:text-4xl font-bold text-gs-charcoal mb-4 leading-tight">Amber Grey</h2>
+                    
+                    <!-- Divider -->
+                    <hr class="border-gs-lightgray mb-5">
+
+                    <!-- Specs Table/Grid -->
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gs-offwhite p-3 rounded-lg border border-gs-lightgray/40">
+                            <span id="modalVolumeSub" class="block text-xs text-gs-gray font-medium">Volume Tersedia</span>
+                            <span id="modalVolumeLabel" class="font-sans font-bold text-lg md:text-xl text-gs-charcoal">351 m²</span>
+                        </div>
+                        <div class="bg-gs-offwhite p-3 rounded-lg border border-gs-lightgray/40">
+                            <span id="modalSlabSub" class="block text-xs text-gs-gray font-medium">Total Slab</span>
+                            <span id="modalSlabLabel" class="font-sans font-bold text-lg md:text-xl text-gs-charcoal">52 pcs</span>
+                        </div>
+                    </div>
+
+                    <!-- Beautiful Architectural Description Title -->
+                    <h4 class="text-xs font-bold uppercase text-gs-charcoal tracking-wider mb-2">Deskripsi Karakteristik</h4>
+                    <!-- Dynamic Description Text -->
+                    <p id="modalDescription" class="text-gs-gray text-sm md:text-base leading-relaxed mb-8">
+                        Marmer abu-abu modern dengan nuansa kontemporer yang kuat.
+                    </p>
+                </div>
+
+                <!-- WhatsApp CTA Action Buttons -->
+                <div class="mt-auto pt-4 border-t border-gs-lightgray">
+                    <a id="modalWhatsAppBtn" href="" target="_blank" class="flex justify-center items-center gap-3 w-full bg-[#25D366] hover:bg-[#1EBE57] hover:scale-[1.01] active:scale-[0.99] text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg text-center tracking-wide text-sm md:text-base">
+                        <!-- WhatsApp SVG Icon -->
+                        <svg class="w-5 h-5 md:w-6 md:h-6 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                        <span>Tanya Harga & Detail via WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Client-side Scripts -->
     <script>
         // Mobile Menu
@@ -709,12 +777,83 @@
             }
         ];
 
+        // Architectural copy generator for premium stone descriptions in Indonesian
+        function generateDescription(name, category) {
+            const upperName = name.toUpperCase();
+            
+            if (category === "marble") {
+                if (upperName.includes("WHITE") || upperName.includes("BIANCO") || upperName.includes("STATUARIO") || upperName.includes("CARARA") || upperName.includes("STATUARIETO") || upperName.includes("PANDA")) {
+                    return "Marmer putih premium dengan guratan abu-abu yang elegan dan mewah. Karakteristik permukaannya yang jernih dengan pola urat alami yang halus memberikan sentuhan klasik, bersih, dan eksklusif. Sangat ideal untuk aplikasi lantai utama, dinding aksen, meja wastafel, maupun area foyer mewah yang membutuhkan kesan lapang dan prestisius.";
+                }
+                if (upperName.includes("GREY") || upperName.includes("GRIGIO") || upperName.includes("ARMANY") || upperName.includes("TURTLE") || upperName.includes("MONACO") || upperName.includes("MONET") || upperName.includes("CIELO")) {
+                    return "Marmer abu-abu modern dengan nuansa kontemporer yang kuat. Memiliki keindahan guratan urat yang dramatis namun tetap menyatu lembut dengan latar abu-abu yang anggun. Sempurna untuk menciptakan suasana interior yang maskulin, elegan, dan menenangkan, sangat cocok untuk dinding ruang tamu, kamar mandi mewah, atau lantai ruang keluarga.";
+                }
+                if (upperName.includes("CREAM") || upperName.includes("BEIGE") || upperName.includes("DIANO") || upperName.includes("EMPIRE") || upperName.includes("COMPRESS")) {
+                    return "Marmer krem hangat dengan keindahan warna alami yang memancarkan kehangatan dan kenyamanan. Karakter permukaannya sangat lembut dengan gradasi warna bumi (earth tone) yang konsisten, menjadikannya pilihan favorit para desainer untuk menghidupkan suasana ruang yang homy, tenang, namun tetap berkelas dan mewah.";
+                }
+                if (upperName.includes("GOLD") || upperName.includes("YELLOW") || upperName.includes("HONEY") || upperName.includes("TRAVERTINE") || upperName.includes("AMBER")) {
+                    return "Material premium dengan dominasi warna keemasan atau kuning hangat yang eksotis. Menampilkan tekstur alami berpori yang khas atau guratan urat emas yang mewah. Memberikan aura kemegahan klasik dan artistik, sangat direkomendasikan untuk dinding luar ruangan (fasad), kolom, maupun panel aksen dalam ruangan.";
+                }
+                if (upperName.includes("BLACK") || upperName.includes("DARK") || upperName.includes("NERO") || upperName.includes("PORTORO") || upperName.includes("SAINT")) {
+                    return "Marmer hitam legam dengan guratan urat putih atau emas yang sangat kontras dan dramatis. Menampilkan ekspresi estetika yang berani, megah, dan misterius. Pilihan sempurna bagi Anda yang ingin menghadirkan kemewahan mutlak pada area bar, dinding aksen, panel TV, maupun lantai dengan konsep modern-luxury.";
+                }
+                return `Marmer alam ${name} kurasi terbaik Global Stone. Pola uratnya yang mengalir bebas merupakan lukisan alam yang tidak pernah sama di setiap slab-nya. Sempurna sebagai lantai utama atau dinding dekoratif ruang keluarga untuk memberikan nuansa mewah yang alami dan elegan.`;
+            }
+            
+            if (category === "granite") {
+                if (upperName.includes("BLACK") || upperName.includes("ASH") || upperName.includes("GUCCI") || upperName.includes("ITALIAN") || upperName.includes("FOREST")) {
+                    return "Granit hitam premium dengan ketahanan luar biasa terhadap goresan, noda, dan suhu tinggi. Menampilkan kilau kristal gelap yang pekat dengan struktur butiran mineral yang padat dan kokoh. Sangat ideal untuk area dengan intensitas pemakaian tinggi seperti meja dapur (kitchen countertop), lantai lobi, area outdoor, maupun anak tangga.";
+                }
+                if (upperName.includes("GOLD") || upperName.includes("ARTIC") || upperName.includes("PHOENIX")) {
+                    return "Granit dengan kombinasi warna emas, kuning, dan kuarsa yang spektakuler. Pola abstraknya yang dinamis memberikan efek visual yang hidup dan megah. Sangat direkomendasikan untuk top table dapur basah, meja makan mewah, atau dinding luar ruangan karena sifatnya yang tahan terhadap cuaca ekstrem.";
+                }
+                if (upperName.includes("GREY") || upperName.includes("GRIGIO") || upperName.includes("TITAN") || upperName.includes("MONTANA")) {
+                    return "Granit abu-abu berstruktur butiran mineral halus hingga sedang, menampilkan kekokohan alami yang elegan dan profesional. Tampilannya yang bersih dan netral menjadikannya material yang sangat serbaguna untuk konsep desain industrial modern, minimalis, maupun aplikasi eksterior.";
+                }
+                return `Granit alam ${name} pilihan dengan kekuatan struktural tinggi dan porositas sangat rendah. Memiliki ketahanan prima terhadap beban berat, goresan, dan cuaca, menjadikannya investasi jangka panjang terbaik untuk keindahan lantai komersial, tangga, maupun countertop dapur Anda.`;
+            }
+            
+            if (category === "exotic") {
+                if (upperName.includes("ONYX")) {
+                    return "Batu Onyx eksotis yang memiliki karakteristik semi-transparan (translucent) sehingga dapat memancarkan cahaya saat diberi lampu latar (backlit). Menampilkan lapisan gradasi warna alami yang luar biasa indah bak karya seni abstrak. Sangat memukau untuk dinding panel lobi utama, meja bar mewah, atau instalasi dekoratif eksklusif.";
+                }
+                if (upperName.includes("PATAGONIA")) {
+                    return "Batu alam super-eksotis yang menggabungkan batuan kuarsa kristal transparan dengan formasi batuan vulkanik berbutir besar. Kombinasi dramatis antara area bening berkilau dan warna kontras menjadikannya 'masterpiece' alami yang sempurna untuk dinding aksen ruang tamu, meja konsol mewah, atau instalasi backlit.";
+                }
+                if (upperName.includes("MAGMA") || upperName.includes("PHOENIX") || upperName.includes("GOLDEN")) {
+                    return "Batu alam eksotis dengan pola guratan dinamis layaknya aliran magma atau lukisan abstrak alam. Perpaduan warna kontras yang dramatis memberikan kesan visual yang sangat kuat, mewah, dan teatrikal. Sempurna sebagai focal point (pusat perhatian) pada interior rumah mewah Anda.";
+                }
+                if (upperName.includes("WATER") || upperName.includes("SINTERED")) {
+                    return "Material eksotis hasil kurasi khusus dengan nilai estetika tinggi dan ketelitian pola yang sempurna. Menampilkan visual yang mengalir indah seperti riak air atau tekstur ultra-modern yang memukau. Pilihan terbaik untuk proyek arsitektur prestisius yang menginginkan sentuhan modernitas dan keunikan tanpa batas.";
+                }
+                return `Batu eksotis ${name} kurasi eksklusif dari Global Stone. Setiap slab-nya menyimpan formasi batuan purba unik dengan nilai seni yang tiada duanya di dunia. Menawarkan eksklusivitas tingkat tinggi bagi hunian modern-luxury yang mengutamakan keunikan dan prestise seni murni.`;
+            }
+            
+            return `Material ${name} pilihan berkualitas tinggi dari Global Stone, siap dikurasi untuk melengkapi estetika proyek hunian maupun komersial Anda.`;
+        }
+
         // Filtering & Search Logic
         document.addEventListener('DOMContentLoaded', () => {
             const filterBtns = document.querySelectorAll('.filter-btn');
             const searchInput = document.getElementById('searchInput');
             const stockGrid = document.getElementById('stockGrid');
             const emptyState = document.getElementById('emptyState');
+
+            // Modal Elements Selection
+            const modal = document.getElementById('materialModal');
+            const modalBackdrop = document.getElementById('modalBackdrop');
+            const modalBox = document.getElementById('modalBox');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const modalImg = document.getElementById('modalImg');
+            const modalStatusBadge = document.getElementById('modalStatusBadge');
+            const modalCategory = document.getElementById('modalCategory');
+            const modalName = document.getElementById('modalName');
+            const modalVolumeSub = document.getElementById('modalVolumeSub');
+            const modalVolumeLabel = document.getElementById('modalVolumeLabel');
+            const modalSlabSub = document.getElementById('modalSlabSub');
+            const modalSlabLabel = document.getElementById('modalSlabLabel');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalWhatsAppBtn = document.getElementById('modalWhatsAppBtn');
 
             // Render all materials dynamically
             function renderMaterials() {
@@ -727,7 +866,7 @@
                     }
 
                     return `
-                        <div class="stock-card group quiet-card p-4" data-category="${material.category}" data-name="${material.name.toLowerCase()}">
+                        <div class="stock-card group quiet-card p-4 cursor-pointer hover:shadow-lg hover:border-gs-blue/30 transition-all duration-300" data-category="${material.category}" data-name="${material.name.toLowerCase()}" data-material-name="${material.name}">
                             <div class="relative aspect-[4/3] overflow-hidden rounded-sm bg-gs-lightgray mb-4">
                                 <img src="${material.img}" alt="${material.name}" class="w-full h-full object-cover hover-zoom-img" loading="lazy">
                                 <div class="absolute top-3 right-3 px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-bold ${badgeColorClass} rounded-full shadow-sm">
@@ -786,6 +925,89 @@
                     emptyState.classList.add('hidden');
                 }
             }
+
+            // Open Modal function
+            function openModal(materialName) {
+                const material = materialsData.find(m => m.name === materialName);
+                if (!material) return;
+
+                // Populate Modal Content
+                modalImg.src = material.img;
+                modalImg.alt = material.name;
+                modalStatusBadge.textContent = material.status;
+                
+                // Color formatting for status badge
+                modalStatusBadge.className = "absolute top-4 left-4 px-4 py-1.5 bg-white/95 backdrop-blur-sm text-xs font-bold rounded-full shadow-md transition-colors";
+                if (material.status === "Ready") {
+                    modalStatusBadge.classList.add("text-green-700");
+                } else if (material.status === "Limited") {
+                    modalStatusBadge.classList.add("text-orange-600");
+                } else {
+                    modalStatusBadge.classList.add("text-red-600");
+                }
+
+                modalCategory.textContent = material.category;
+                modalName.textContent = material.name;
+                
+                modalVolumeSub.textContent = material.volumeSub;
+                modalVolumeLabel.textContent = material.volumeLabel;
+                modalSlabSub.textContent = material.slabSub;
+                modalSlabLabel.textContent = material.slabLabel;
+
+                // Generate dynamic copy
+                const desc = generateDescription(material.name, material.category);
+                modalDescription.textContent = desc;
+
+                // Configure WhatsApp Button link
+                const baseWA = "https://wa.me/6281287875820";
+                const textMessage = `Halo Global Stone, saya ingin bertanya tentang ketersediaan, detail, dan harga untuk material *${material.name}* (${material.category.toUpperCase()}). Terima kasih!`;
+                modalWhatsAppBtn.href = `${baseWA}?text=${encodeURIComponent(textMessage)}`;
+
+                // Show modal with transitions
+                modal.classList.remove('hidden');
+                // Allow browser to render layout before transition
+                setTimeout(() => {
+                    modalBackdrop.classList.remove('opacity-0');
+                    modalBackdrop.classList.add('opacity-100');
+                    modalBox.classList.remove('scale-95', 'opacity-0');
+                    modalBox.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            }
+
+            // Close Modal function
+            function closeModal() {
+                modalBackdrop.classList.remove('opacity-100');
+                modalBackdrop.classList.add('opacity-0');
+                modalBox.classList.remove('scale-100', 'opacity-100');
+                modalBox.classList.add('scale-95', 'opacity-0');
+
+                // Wait for animation to finish
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+            }
+
+            // Click event delegation on stockGrid
+            stockGrid.addEventListener('click', (e) => {
+                const card = e.target.closest('.stock-card');
+                if (card) {
+                    const materialName = card.dataset.materialName;
+                    if (materialName) {
+                        openModal(materialName);
+                    }
+                }
+            });
+
+            // Close listeners
+            closeModalBtn.addEventListener('click', closeModal);
+            modalBackdrop.addEventListener('click', closeModal);
+
+            // Escape key listener
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
 
             // Filter Buttons Click
             filterBtns.forEach(btn => {
