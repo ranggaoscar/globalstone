@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story & Blog | Global Stone</title>
+    <meta name="description" content="Kumpulan artikel, tips, dan inspirasi seputar marmer, granit, dan batu alam premium untuk proyek Anda dari Global Stone.">
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gs-offwhite': '#f7f5f2',
+                        'gs-charcoal': '#1a1a1a',
+                        'gs-blue': '#1B4F8A',
+                        'gs-gold': '#B89B5E',
+                        'gs-gray': '#8E8E8E',
+                        'gs-lightgray': '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css?v=20260602-vr360">
+</head>
+<body class="bg-gs-offwhite text-gs-charcoal font-sans antialiased pb-24">
+
+    <!-- Header -->
+    <header id="main-header" class="bg-[#0c111d]/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-gs-blue/15 transition-all duration-300 py-3 shadow-[0_4px_20px_rgba(27,79,138,0.25)]">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center relative">
+            <a href="index.html" class="block h-10 md:h-12 shrink-0">
+                <img src="assets/images/logo.png" alt="Global Stone Logo" class="h-full w-auto object-contain">
+            </a>
+            
+            <!-- Mobile Menu Toggle -->
+            <button id="mobileMenuBtn" class="md:hidden text-white focus:outline-none z-50">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:block">
+                <ul class="flex gap-8 text-sm font-medium text-white/70">
+                    <li><a href="index.html" class="hover:text-white transition-colors">Beranda</a></li>
+                    <li><a href="materials.html" class="hover:text-white transition-colors">Material</a></li>
+                    <li><a href="showroom.html" class="hover:text-white transition-colors">Showroom Virtual</a></li>
+                    <li><a href="portfolio.html" class="hover:text-white transition-colors">Portfolio</a></li>
+                    <li><a href="story.html" class="text-white border-b-2 border-gs-blue pb-1">Story</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile Nav -->
+            <nav id="mobileNav" class="mobile-menu flex-col absolute top-full left-0 w-full bg-[#0c111d]/95 backdrop-blur-md border-b border-gs-blue/30 shadow-[0_10px_30px_rgba(27,79,138,0.35)] p-6 gap-6 text-center text-lg font-medium md:hidden hidden">
+                <a href="index.html" class="text-white/80 hover:text-white inline-block pb-1">Beranda</a>
+                <a href="materials.html" class="text-white/80 hover:text-white">Material</a>
+                <a href="showroom.html" class="text-white/80 hover:text-white">Showroom Virtual</a>
+                <a href="portfolio.html" class="text-white/80 hover:text-white">Portfolio</a>
+                <a href="story.html" class="text-white border-b border-gs-blue inline-block pb-1">Story</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-16 bg-[#0c111d] text-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg text-white">Global Stone Story</h1>
+            <p class="text-white/70 max-w-2xl mx-auto text-lg">Inspirasi, tips, dan wawasan seputar dunia batu alam premium untuk mendukung kesuksesan proyek Anda.</p>
+        </div>
+    </section>
+
+    <!-- Blog Grid Section -->
+    <section class="py-16 md:py-24 max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Article 1 -->
+            <a href="artikel-1.html" class="group block bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="h-60 overflow-hidden">
+                    <img src="assets/images/story/article-image-1.png" alt="Panduan Memilih Marmer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-6">
+                    <p class="text-xs text-gs-gold font-semibold uppercase tracking-wider mb-2">Tips & Panduan</p>
+                    <h2 class="font-serif text-xl font-bold text-gs-charcoal mb-3 group-hover:text-gs-blue transition-colors">Panduan Lengkap Memilih Marmer Premium untuk Lantai Rumah Mewah</h2>
+                    <p class="text-gs-gray text-sm line-clamp-3">Temukan rahasia memilih marmer berkualitas tinggi yang tepat untuk menciptakan lantai rumah mewah yang elegan dan tahan lama.</p>
+                </div>
+            </a>
+
+            <!-- Article 2 -->
+            <a href="artikel-2.html" class="group block bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="h-60 overflow-hidden">
+                    <img src="assets/images/story/article-image-2.png" alt="Granit Meja Dapur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-6">
+                    <p class="text-xs text-gs-gold font-semibold uppercase tracking-wider mb-2">Interior</p>
+                    <h2 class="font-serif text-xl font-bold text-gs-charcoal mb-3 group-hover:text-gs-blue transition-colors">5 Alasan Granit Adalah Pilihan Terbaik untuk Meja Dapur (Kitchen Countertop)</h2>
+                    <p class="text-gs-gray text-sm line-clamp-3">Mengapa granit tetap menjadi standar emas untuk meja dapur? Simak 5 keunggulan utamanya untuk dapur modern Anda.</p>
+                </div>
+            </a>
+
+            <!-- Article 3 -->
+            <a href="artikel-3.html" class="group block bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="h-60 overflow-hidden">
+                    <img src="assets/images/story/article-image-3.png" alt="Tren Exotic Stone" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-6">
+                    <p class="text-xs text-gs-gold font-semibold uppercase tracking-wider mb-2">Tren Desain</p>
+                    <h2 class="font-serif text-xl font-bold text-gs-charcoal mb-3 group-hover:text-gs-blue transition-colors">Tren Desain Interior 2026: Menggunakan Exotic Stone sebagai Aksen Ruangan</h2>
+                    <p class="text-gs-gray text-sm line-clamp-3">Eksplorasi penggunaan exotic stone dengan corak dramatis yang mendominasi tren interior kelas atas tahun ini.</p>
+                </div>
+            </a>
+
+            <!-- Article 4 -->
+            <a href="artikel-4.html" class="group block bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="h-60 overflow-hidden">
+                    <img src="assets/images/story/article-image-1.png" alt="Perbedaan Marmer dan Granit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-6">
+                    <p class="text-xs text-gs-gold font-semibold uppercase tracking-wider mb-2">Edukasi</p>
+                    <h2 class="font-serif text-xl font-bold text-gs-charcoal mb-3 group-hover:text-gs-blue transition-colors">Perbedaan Marmer dan Granit: Mana yang Lebih Cocok untuk Proyek Anda?</h2>
+                    <p class="text-gs-gray text-sm line-clamp-3">Ketahui perbedaan karakteristik, daya tahan, dan estetika antara marmer dan granit sebelum mengambil keputusan untuk proyek Anda.</p>
+                </div>
+            </a>
+
+            <!-- Article 5 -->
+            <a href="artikel-5.html" class="group block bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="h-60 overflow-hidden">
+                    <img src="assets/images/story/article-image-2.png" alt="Cara Merawat Lantai Marmer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-6">
+                    <p class="text-xs text-gs-gold font-semibold uppercase tracking-wider mb-2">Perawatan</p>
+                    <h2 class="font-serif text-xl font-bold text-gs-charcoal mb-3 group-hover:text-gs-blue transition-colors">Cara Merawat Lantai Marmer Agar Tetap Mengkilap Sepanjang Masa</h2>
+                    <p class="text-gs-gray text-sm line-clamp-3">Panduan praktis menjaga kilau lantai marmer agar tidak kusam, tahan lama, dan selalu terlihat seperti baru.</p>
+                </div>
+            </a>
+
+            <!-- Article 6 -->
+            <a href="artikel-6.html" class="group block bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="h-60 overflow-hidden">
+                    <img src="assets/images/story/article-image-3.png" alt="Kamar Mandi Mewah" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-6">
+                    <p class="text-xs text-gs-gold font-semibold uppercase tracking-wider mb-2">Inspirasi</p>
+                    <h2 class="font-serif text-xl font-bold text-gs-charcoal mb-3 group-hover:text-gs-blue transition-colors">Inspirasi Desain Kamar Mandi Mewah dengan Balutan Batu Alam</h2>
+                    <p class="text-gs-gray text-sm line-clamp-3">Ciptakan suasana spa eksklusif di rumah sendiri dengan mengaplikasikan batu alam pilihan pada dinding dan lantai kamar mandi.</p>
+                </div>
+            </a>
+
+            <!-- Article 7 -->
+            <a href="artikel-7.html" class="group block bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="h-60 overflow-hidden">
+                    <img src="assets/images/story/article-image-1.png" alt="Bookmatch Marble" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-6">
+                    <p class="text-xs text-gs-gold font-semibold uppercase tracking-wider mb-2">Desain</p>
+                    <h2 class="font-serif text-xl font-bold text-gs-charcoal mb-3 group-hover:text-gs-blue transition-colors">Mengenal Bookmatch Marble: Seni Menyatukan Urat Batu untuk Dinding</h2>
+                    <p class="text-gs-gray text-sm line-clamp-3">Pelajari teknik instalasi bookmatch yang mampu mengubah dinding ruangan menjadi karya seni simetris dari alam.</p>
+                </div>
+            </a>
+
+            <!-- Article 8 -->
+            <a href="artikel-8.html" class="group block bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="h-60 overflow-hidden">
+                    <img src="assets/images/story/article-image-2.png" alt="Beli Slab Marmer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-6">
+                    <p class="text-xs text-gs-gold font-semibold uppercase tracking-wider mb-2">Tips & Panduan</p>
+                    <h2 class="font-serif text-xl font-bold text-gs-charcoal mb-3 group-hover:text-gs-blue transition-colors">Keuntungan Membeli Slab Marmer Langsung dari Gudang (Showroom)</h2>
+                    <p class="text-gs-gray text-sm line-clamp-3">Alasan mengapa inspeksi visual langsung di gudang sangat penting sebelum memutuskan pembelian material untuk proyek Anda.</p>
+                </div>
+            </a>
+
+            <!-- Article 9 -->
+            <a href="artikel-9.html" class="group block bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="h-60 overflow-hidden">
+                    <img src="assets/images/story/article-image-3.png" alt="Memilih Supplier" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-6">
+                    <p class="text-xs text-gs-gold font-semibold uppercase tracking-wider mb-2">Manajemen Proyek</p>
+                    <h2 class="font-serif text-xl font-bold text-gs-charcoal mb-3 group-hover:text-gs-blue transition-colors">Tips Memilih Supplier Batu Alam Terpercaya untuk Proyek Skala Besar</h2>
+                    <p class="text-gs-gray text-sm line-clamp-3">Jangan salah pilih! Pahami kriteria supplier batu alam profesional yang mampu menjamin ketersediaan dan kualitas material.</p>
+                </div>
+            </a>
+
+            <!-- Article 10 -->
+            <a href="artikel-10.html" class="group block bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="h-60 overflow-hidden">
+                    <img src="assets/images/story/article-image-1.png" alt="Finishing Batu Alam" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-6">
+                    <p class="text-xs text-gs-gold font-semibold uppercase tracking-wider mb-2">Edukasi</p>
+                    <h2 class="font-serif text-xl font-bold text-gs-charcoal mb-3 group-hover:text-gs-blue transition-colors">Mengenal Berbagai Jenis Finishing pada Batu Alam: Polished, Honed, dan Leathered</h2>
+                    <p class="text-gs-gray text-sm line-clamp-3">Setiap finishing memiliki karakter tersendiri. Mana yang paling sesuai untuk lantai, dinding, atau area basah? Temukan jawabannya di sini.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0c111d] text-white border-t border-gs-blue/20 py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="font-serif text-2xl mb-4">Global Stone</h2>
+            <p class="text-white/60 text-sm mb-6 max-w-md mx-auto">Menyediakan material batu alam premium terbaik untuk mendukung kesuksesan proyek arsitektur dan interior Anda.</p>
+            <div class="flex justify-center gap-6 text-sm text-white/70">
+                <a href="https://instagram.com/globalstones_official" target="_blank" class="hover:text-gs-gold transition-colors">Instagram @globalstones_official</a>
+                <a href="https://wa.me/6281287875820" target="_blank" class="hover:text-gs-gold transition-colors">WhatsApp 0812-8787-5820</a>
+            </div>
+            <p class="text-xs text-white/40 mt-8">&copy; 2026 Global Stone. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Header Scroll & Fade
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('py-1.5', 'bg-[#0c111d]/95', 'border-gs-blue/30', 'shadow-[0_4px_25px_rgba(27,79,138,0.35)]');
+                header.classList.remove('py-3', 'bg-[#0c111d]/90', 'border-gs-blue/15', 'shadow-[0_4px_20px_rgba(27,79,138,0.25)]');
+            } else {
+                header.classList.remove('py-1.5', 'bg-[#0c111d]/95', 'border-gs-blue/30', 'shadow-[0_4px_25px_rgba(27,79,138,0.35)]');
+                header.classList.add('py-3', 'bg-[#0c111d]/90', 'border-gs-blue/15', 'shadow-[0_4px_20px_rgba(27,79,138,0.25)]');
+            }
+        });
+
+        // Mobile Menu
+        const btn = document.getElementById('mobileMenuBtn');
+        const nav = document.getElementById('mobileNav');
+        btn.addEventListener('click', () => {
+            nav.classList.toggle('hidden');
+            nav.classList.toggle('flex');
+        });
+    </script>
+</body>
+</html>
